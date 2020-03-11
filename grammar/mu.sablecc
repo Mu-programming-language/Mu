@@ -1,0 +1,76 @@
+Helpers
+	lowercase = ['a'..'z'];
+	uppercase = ['A'..'Z'];
+	letter = lowercase | uppercase;
+	digit = ['0'..'9'];
+	space = ' ';
+	tab = 9;
+	lf = 10;
+	cr = 13;
+	eol = cr lf | cr | lf;
+	blank = (space | tab | eol);
+	allexcepteol = [0..9] | [11..12] | [14..127];
+	all = allexcepteol | eol;
+
+Tokens
+	let = 'let';
+	proof = 'proof';
+	statement = 'statement';
+	real = 'R';
+	natural = 'N';
+	integer = 'Z';
+	rational = 'Q';
+	complex = 'C';
+	forall = '∀';
+	exist = '∃';
+	subset_of = '⊂';
+	superset_of = '⊃';
+	element_of = '∈';
+	contains_as_member = '∋';
+	not = '¬';
+	plus = '+';
+	minus = '-';
+	union = '∪';
+	intersection = '∩';
+	logical_and = '∧';
+	logical_or = '∨';
+	empty_set = '∅';
+	l_brace = '{';
+	r_brace = '}';
+	comma = ',';
+	semicolon = ';';
+	mult = '*';
+	div = '/';
+	mod = '%';
+	l_par = '(';
+	r_par = ')';
+	equal = '=';
+	set = uppercase;
+	element = lowercase;
+	blank = blank+;
+	ident = letter (letter | digit)*;
+	number = '0' | (['1'..'9'] ['0'..'9']*);
+	short_comment = '//' allexcepteol* eol?;
+	long_comment = '/*' all '*/';
+
+Ignored Tokens
+	blank,
+	short_comment,
+	long_comment;
+/*
+Productions
+	program =
+		block;
+	block =
+		l_brace [instructions]:instruction* r_brace;
+	statement_list =
+		statement [additional_statements]:additional_statement* semicolon;
+	additional_statement =
+		comma statement;
+	proof =
+		proof block;
+
+		{declaration} let ident semicolon |
+		{assignation} ident equal number semicolon;
+
+*/
