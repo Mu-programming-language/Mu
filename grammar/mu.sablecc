@@ -16,40 +16,65 @@ Tokens
 	let = 'let';
 	proof = 'proof';
 	statement = 'statement';
+/*
 	real = 'R';
 	natural = 'N';
 	integer = 'Z';
 	rational = 'Q';
 	complex = 'C';
-	forall = '∀';
-	exist = '∃';
-	subset_of = '⊂';
-	superset_of = '⊃';
-	element_of = '∈';
-	contains_as_member = '∋';
-	not = '¬';
+*/
+	not = '¬' | 'not';
+
+	empty_set = '∅';
+
+	multiplication = '*';
+	division = '/';
+	modulo = '%';
 	plus = '+';
 	minus = '-';
-	union = '∪';
-	intersection = '∩';
-	logical_and = '∧';
-	logical_or = '∨';
-	empty_set = '∅';
-	l_brace = '{';
-	r_brace = '}';
+
+	for_all = '∀' | 'forall';
+	exist = '∃' | 'exists';
+
+	such_as = '|';
 	comma = ',';
 	semicolon = ';';
-	mult = '*';
-	div = '/';
-	mod = '%';
-	l_par = '(';
-	r_par = ')';
-	equal = '=';
+
+	logical_and = '∧' | 'and';
+	logical_or = '∨' | 'or';
+
+	union = '∪' | 'union';
+	intersection = '∩' | 'intersection';
+
+	subset_of = '⊂' | 'subsetof';
+	superset_of = '⊃' | 'supersetof';
+	element_of = '∈' | 'elementof';
+	contains_as_member = '∋' | 'containsasmember';
+
+	left_brace = '{';
+	right_brace = '}';
+	left_parenthesis = '(';
+	right_parenthesis = ')';
+	lelft_bracket = '[';
+	right_bracket = ']';
+
+	equal_to = '=';
+	greater_than = '>';
+	less_than = '<';
+	greater_than_or_equal_to = '≥' | '>=';
+	less_than_or_equal_to = '≤' | '<=';
+	not_equal_to = '≠' | '!=';
+	not_greater_than = '≯' | '!>';
+	not_less_than = '≮' | '!<';
+	neither_greater_than_nor_equal_to = '≱' | '!>=';
+	neither_less_than_nor_equal_to = '≰' | '!<=';
+
 	set = uppercase;
 	element = lowercase;
-	blank = blank+;
-	ident = letter (letter | digit)*;
 	number = '0' | (['1'..'9'] ['0'..'9']*);
+	identifier = letter (letter | digit)*;
+
+	blank = blank+;
 	short_comment = '//' allexcepteol* eol?;
 	long_comment = '/*' all '*/';
 
@@ -57,20 +82,38 @@ Ignored Tokens
 	blank,
 	short_comment,
 	long_comment;
-/*
+
 Productions
 	program =
 		block;
 	block =
-		l_brace [instructions]:instruction* r_brace;
-	statement_list =
-		statement [additional_statements]:additional_statement* semicolon;
-	additional_statement =
-		comma statement;
-	proof =
-		proof block;
-
-		{declaration} let ident semicolon |
-		{assignation} ident equal number semicolon;
-
-*/
+		left_brace element element_of set such_as expression right_brace;
+	expression =
+		{comparison} comparison |
+		{logical_and} expression logical_and comparison |
+		{logical_or} expression logical_or comparison;
+	comparison =
+		{arithmetic} arithmetic |
+		{equal_to} comparison equal_to arithmetic |
+		{greater_than} comparison greater_than arithmetic |
+		{less_than} comparison less_than arithmetic |
+		{greater_than_or_equal_to} comparison greater_than_or_equal_to arithmetic |
+		{less_than_or_equal_to} comparison less_than_or_equal_to arithmetic |
+		{not_equal_to} comparison not_equal_to arithmetic |
+		{not_greater_than} comparison not_greater_than arithmetic |
+		{not_less_than} comparison not_less_than arithmetic |
+		{neither_greater_than_nor_equal_to} comparison neither_greater_than_nor_equal_to arithmetic |
+		{neither_less_than_nor_equal_to} comparison neither_less_than_nor_equal_to arithmetic;
+	arithmetic =
+		{factor} factor |
+		{plus} arithmetic plus factor |
+		{minus} arithmetic minus factor;
+	factor =
+		{term} term |
+		{multiplication} factor multiplication term |
+		{division} factor division term |
+		{modulo} factor modulo term;
+	term =
+		{number} number |
+		{element} element |
+		{expression} left_parenthesis expression right_parenthesis;
