@@ -36,41 +36,356 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outStart(node);
     }
 
-    public void inAProgram(AProgram node)
+    public void inAStatementInstructionProgram(AStatementInstructionProgram node)
     {
         defaultIn(node);
     }
 
-    public void outAProgram(AProgram node)
+    public void outAStatementInstructionProgram(AStatementInstructionProgram node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAProgram(AProgram node)
+    public void caseAStatementInstructionProgram(AStatementInstructionProgram node)
     {
-        inAProgram(node);
-        if(node.getBlock() != null)
+        inAStatementInstructionProgram(node);
+        if(node.getStatementInstructionList() != null)
         {
-            node.getBlock().apply(this);
+            node.getStatementInstructionList().apply(this);
         }
-        outAProgram(node);
+        if(node.getColumn() != null)
+        {
+            node.getColumn().apply(this);
+        }
+        if(node.getStatement() != null)
+        {
+            node.getStatement().apply(this);
+        }
+        outAStatementInstructionProgram(node);
     }
 
-    public void inABlock(ABlock node)
+    public void inAQuestionInstructionProgram(AQuestionInstructionProgram node)
     {
         defaultIn(node);
     }
 
-    public void outABlock(ABlock node)
+    public void outAQuestionInstructionProgram(AQuestionInstructionProgram node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseABlock(ABlock node)
+    public void caseAQuestionInstructionProgram(AQuestionInstructionProgram node)
     {
-        inABlock(node);
+        inAQuestionInstructionProgram(node);
+        if(node.getQuestionInstructionList() != null)
+        {
+            node.getQuestionInstructionList().apply(this);
+        }
+        if(node.getColumn() != null)
+        {
+            node.getColumn().apply(this);
+        }
+        if(node.getQuestion() != null)
+        {
+            node.getQuestion().apply(this);
+        }
+        outAQuestionInstructionProgram(node);
+    }
+
+    public void inAProofInstructionProgram(AProofInstructionProgram node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAProofInstructionProgram(AProofInstructionProgram node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAProofInstructionProgram(AProofInstructionProgram node)
+    {
+        inAProofInstructionProgram(node);
+        if(node.getProofInstruction() != null)
+        {
+            node.getProofInstruction().apply(this);
+        }
+        if(node.getColumn() != null)
+        {
+            node.getColumn().apply(this);
+        }
+        if(node.getProof() != null)
+        {
+            node.getProof().apply(this);
+        }
+        outAProofInstructionProgram(node);
+    }
+
+    public void inAStatementInstructionList(AStatementInstructionList node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStatementInstructionList(AStatementInstructionList node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStatementInstructionList(AStatementInstructionList node)
+    {
+        inAStatementInstructionList(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        {
+            List<PAdditionalStatementInstruction> copy = new ArrayList<PAdditionalStatementInstruction>(node.getAdditionalStatementInstruction());
+            Collections.reverse(copy);
+            for(PAdditionalStatementInstruction e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getStatementInstruction() != null)
+        {
+            node.getStatementInstruction().apply(this);
+        }
+        outAStatementInstructionList(node);
+    }
+
+    public void inAAdditionalStatementInstruction(AAdditionalStatementInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAdditionalStatementInstruction(AAdditionalStatementInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAdditionalStatementInstruction(AAdditionalStatementInstruction node)
+    {
+        inAAdditionalStatementInstruction(node);
+        if(node.getStatementInstruction() != null)
+        {
+            node.getStatementInstruction().apply(this);
+        }
+        if(node.getComma() != null)
+        {
+            node.getComma().apply(this);
+        }
+        outAAdditionalStatementInstruction(node);
+    }
+
+    public void inADeclarationStatementInstruction(ADeclarationStatementInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADeclarationStatementInstruction(ADeclarationStatementInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADeclarationStatementInstruction(ADeclarationStatementInstruction node)
+    {
+        inADeclarationStatementInstruction(node);
+        if(node.getSet() != null)
+        {
+            node.getSet().apply(this);
+        }
+        if(node.getLet() != null)
+        {
+            node.getLet().apply(this);
+        }
+        outADeclarationStatementInstruction(node);
+    }
+
+    public void inAAssignmentStatementInstruction(AAssignmentStatementInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAssignmentStatementInstruction(AAssignmentStatementInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAssignmentStatementInstruction(AAssignmentStatementInstruction node)
+    {
+        inAAssignmentStatementInstruction(node);
+        if(node.getSet() != null)
+        {
+            node.getSet().apply(this);
+        }
+        if(node.getEqualTo() != null)
+        {
+            node.getEqualTo().apply(this);
+        }
+        if(node.getSetIdentifier() != null)
+        {
+            node.getSetIdentifier().apply(this);
+        }
+        outAAssignmentStatementInstruction(node);
+    }
+
+    public void inADefinitionStatementInstruction(ADefinitionStatementInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADefinitionStatementInstruction(ADefinitionStatementInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADefinitionStatementInstruction(ADefinitionStatementInstruction node)
+    {
+        inADefinitionStatementInstruction(node);
+        if(node.getSet() != null)
+        {
+            node.getSet().apply(this);
+        }
+        if(node.getEqualTo() != null)
+        {
+            node.getEqualTo().apply(this);
+        }
+        if(node.getSetIdentifier() != null)
+        {
+            node.getSetIdentifier().apply(this);
+        }
+        if(node.getLet() != null)
+        {
+            node.getLet().apply(this);
+        }
+        outADefinitionStatementInstruction(node);
+    }
+
+    public void inAQuestionInstructionList(AQuestionInstructionList node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAQuestionInstructionList(AQuestionInstructionList node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAQuestionInstructionList(AQuestionInstructionList node)
+    {
+        inAQuestionInstructionList(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        {
+            List<PAdditionalQuestionInstruction> copy = new ArrayList<PAdditionalQuestionInstruction>(node.getAdditionalQuestionInstruction());
+            Collections.reverse(copy);
+            for(PAdditionalQuestionInstruction e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getQuestionInstruction() != null)
+        {
+            node.getQuestionInstruction().apply(this);
+        }
+        outAQuestionInstructionList(node);
+    }
+
+    public void inAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    {
+        inAAdditionalQuestionInstruction(node);
+        if(node.getQuestionInstruction() != null)
+        {
+            node.getQuestionInstruction().apply(this);
+        }
+        if(node.getComma() != null)
+        {
+            node.getComma().apply(this);
+        }
+        outAAdditionalQuestionInstruction(node);
+    }
+
+    public void inAQuestionInstruction(AQuestionInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAQuestionInstruction(AQuestionInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAQuestionInstruction(AQuestionInstruction node)
+    {
+        inAQuestionInstruction(node);
+        if(node.getString() != null)
+        {
+            node.getString().apply(this);
+        }
+        if(node.getColumn() != null)
+        {
+            node.getColumn().apply(this);
+        }
+        if(node.getQuestionNumber() != null)
+        {
+            node.getQuestionNumber().apply(this);
+        }
+        outAQuestionInstruction(node);
+    }
+
+    public void inAProofInstruction(AProofInstruction node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAProofInstruction(AProofInstruction node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAProofInstruction(AProofInstruction node)
+    {
+        inAProofInstruction(node);
+        outAProofInstruction(node);
+    }
+
+    public void inASet(ASet node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASet(ASet node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASet(ASet node)
+    {
+        inASet(node);
         if(node.getRightBrace() != null)
         {
             node.getRightBrace().apply(this);
@@ -83,23 +398,23 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getSuchAs().apply(this);
         }
-        if(node.getSet() != null)
+        if(node.getSetIdentifier() != null)
         {
-            node.getSet().apply(this);
+            node.getSetIdentifier().apply(this);
         }
         if(node.getElementOf() != null)
         {
             node.getElementOf().apply(this);
         }
-        if(node.getElement() != null)
+        if(node.getElementIdentifier() != null)
         {
-            node.getElement().apply(this);
+            node.getElementIdentifier().apply(this);
         }
         if(node.getLeftBrace() != null)
         {
             node.getLeftBrace().apply(this);
         }
-        outABlock(node);
+        outASet(node);
     }
 
     public void inAComparisonExpression(AComparisonExpression node)
@@ -714,9 +1029,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAElementTerm(AElementTerm node)
     {
         inAElementTerm(node);
-        if(node.getElement() != null)
+        if(node.getElementIdentifier() != null)
         {
-            node.getElement().apply(this);
+            node.getElementIdentifier().apply(this);
         }
         outAElementTerm(node);
     }

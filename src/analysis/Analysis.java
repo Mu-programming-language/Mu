@@ -12,8 +12,19 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
-    void caseAProgram(AProgram node);
-    void caseABlock(ABlock node);
+    void caseAStatementInstructionProgram(AStatementInstructionProgram node);
+    void caseAQuestionInstructionProgram(AQuestionInstructionProgram node);
+    void caseAProofInstructionProgram(AProofInstructionProgram node);
+    void caseAStatementInstructionList(AStatementInstructionList node);
+    void caseAAdditionalStatementInstruction(AAdditionalStatementInstruction node);
+    void caseADeclarationStatementInstruction(ADeclarationStatementInstruction node);
+    void caseAAssignmentStatementInstruction(AAssignmentStatementInstruction node);
+    void caseADefinitionStatementInstruction(ADefinitionStatementInstruction node);
+    void caseAQuestionInstructionList(AQuestionInstructionList node);
+    void caseAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node);
+    void caseAQuestionInstruction(AQuestionInstruction node);
+    void caseAProofInstruction(AProofInstruction node);
+    void caseASet(ASet node);
     void caseAComparisonExpression(AComparisonExpression node);
     void caseALogicalAndExpression(ALogicalAndExpression node);
     void caseALogicalOrExpression(ALogicalOrExpression node);
@@ -42,6 +53,7 @@ public interface Analysis extends Switch
     void caseTLet(TLet node);
     void caseTProof(TProof node);
     void caseTStatement(TStatement node);
+    void caseTQuestion(TQuestion node);
     void caseTNot(TNot node);
     void caseTEmptySet(TEmptySet node);
     void caseTMultiplication(TMultiplication node);
@@ -54,6 +66,9 @@ public interface Analysis extends Switch
     void caseTSuchAs(TSuchAs node);
     void caseTComma(TComma node);
     void caseTSemicolon(TSemicolon node);
+    void caseTColumn(TColumn node);
+    void caseTDiesis(TDiesis node);
+    void caseTImplication(TImplication node);
     void caseTLogicalAnd(TLogicalAnd node);
     void caseTLogicalOr(TLogicalOr node);
     void caseTUnion(TUnion node);
@@ -62,6 +77,10 @@ public interface Analysis extends Switch
     void caseTSupersetOf(TSupersetOf node);
     void caseTElementOf(TElementOf node);
     void caseTContainsAsMember(TContainsAsMember node);
+    void caseTNotASubsetOf(TNotASubsetOf node);
+    void caseTNotASupersetOf(TNotASupersetOf node);
+    void caseTNotAnElementOf(TNotAnElementOf node);
+    void caseTDoesNotContainAsMember(TDoesNotContainAsMember node);
     void caseTLeftBrace(TLeftBrace node);
     void caseTRightBrace(TRightBrace node);
     void caseTLeftParenthesis(TLeftParenthesis node);
@@ -78,10 +97,12 @@ public interface Analysis extends Switch
     void caseTNotLessThan(TNotLessThan node);
     void caseTNeitherGreaterThanNorEqualTo(TNeitherGreaterThanNorEqualTo node);
     void caseTNeitherLessThanNorEqualTo(TNeitherLessThanNorEqualTo node);
-    void caseTSet(TSet node);
-    void caseTElement(TElement node);
     void caseTNumber(TNumber node);
+    void caseTSetIdentifier(TSetIdentifier node);
+    void caseTElementIdentifier(TElementIdentifier node);
     void caseTIdentifier(TIdentifier node);
+    void caseTQuestionNumber(TQuestionNumber node);
+    void caseTString(TString node);
     void caseTBlank(TBlank node);
     void caseTShortComment(TShortComment node);
     void caseTLongComment(TLongComment node);

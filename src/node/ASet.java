@@ -5,26 +5,26 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ABlock extends PBlock
+public final class ASet extends PSet
 {
     private TLeftBrace _leftBrace_;
-    private TElement _element_;
+    private TElementIdentifier _elementIdentifier_;
     private TElementOf _elementOf_;
-    private TSet _set_;
+    private TSetIdentifier _setIdentifier_;
     private TSuchAs _suchAs_;
     private PExpression _expression_;
     private TRightBrace _rightBrace_;
 
-    public ABlock()
+    public ASet()
     {
         // Constructor
     }
 
-    public ABlock(
+    public ASet(
         @SuppressWarnings("hiding") TLeftBrace _leftBrace_,
-        @SuppressWarnings("hiding") TElement _element_,
+        @SuppressWarnings("hiding") TElementIdentifier _elementIdentifier_,
         @SuppressWarnings("hiding") TElementOf _elementOf_,
-        @SuppressWarnings("hiding") TSet _set_,
+        @SuppressWarnings("hiding") TSetIdentifier _setIdentifier_,
         @SuppressWarnings("hiding") TSuchAs _suchAs_,
         @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") TRightBrace _rightBrace_)
@@ -32,11 +32,11 @@ public final class ABlock extends PBlock
         // Constructor
         setLeftBrace(_leftBrace_);
 
-        setElement(_element_);
+        setElementIdentifier(_elementIdentifier_);
 
         setElementOf(_elementOf_);
 
-        setSet(_set_);
+        setSetIdentifier(_setIdentifier_);
 
         setSuchAs(_suchAs_);
 
@@ -49,11 +49,11 @@ public final class ABlock extends PBlock
     @Override
     public Object clone()
     {
-        return new ABlock(
+        return new ASet(
             cloneNode(this._leftBrace_),
-            cloneNode(this._element_),
+            cloneNode(this._elementIdentifier_),
             cloneNode(this._elementOf_),
-            cloneNode(this._set_),
+            cloneNode(this._setIdentifier_),
             cloneNode(this._suchAs_),
             cloneNode(this._expression_),
             cloneNode(this._rightBrace_));
@@ -62,7 +62,7 @@ public final class ABlock extends PBlock
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseABlock(this);
+        ((Analysis) sw).caseASet(this);
     }
 
     public TLeftBrace getLeftBrace()
@@ -90,16 +90,16 @@ public final class ABlock extends PBlock
         this._leftBrace_ = node;
     }
 
-    public TElement getElement()
+    public TElementIdentifier getElementIdentifier()
     {
-        return this._element_;
+        return this._elementIdentifier_;
     }
 
-    public void setElement(TElement node)
+    public void setElementIdentifier(TElementIdentifier node)
     {
-        if(this._element_ != null)
+        if(this._elementIdentifier_ != null)
         {
-            this._element_.parent(null);
+            this._elementIdentifier_.parent(null);
         }
 
         if(node != null)
@@ -112,7 +112,7 @@ public final class ABlock extends PBlock
             node.parent(this);
         }
 
-        this._element_ = node;
+        this._elementIdentifier_ = node;
     }
 
     public TElementOf getElementOf()
@@ -140,16 +140,16 @@ public final class ABlock extends PBlock
         this._elementOf_ = node;
     }
 
-    public TSet getSet()
+    public TSetIdentifier getSetIdentifier()
     {
-        return this._set_;
+        return this._setIdentifier_;
     }
 
-    public void setSet(TSet node)
+    public void setSetIdentifier(TSetIdentifier node)
     {
-        if(this._set_ != null)
+        if(this._setIdentifier_ != null)
         {
-            this._set_.parent(null);
+            this._setIdentifier_.parent(null);
         }
 
         if(node != null)
@@ -162,7 +162,7 @@ public final class ABlock extends PBlock
             node.parent(this);
         }
 
-        this._set_ = node;
+        this._setIdentifier_ = node;
     }
 
     public TSuchAs getSuchAs()
@@ -245,9 +245,9 @@ public final class ABlock extends PBlock
     {
         return ""
             + toString(this._leftBrace_)
-            + toString(this._element_)
+            + toString(this._elementIdentifier_)
             + toString(this._elementOf_)
-            + toString(this._set_)
+            + toString(this._setIdentifier_)
             + toString(this._suchAs_)
             + toString(this._expression_)
             + toString(this._rightBrace_);
@@ -263,9 +263,9 @@ public final class ABlock extends PBlock
             return;
         }
 
-        if(this._element_ == child)
+        if(this._elementIdentifier_ == child)
         {
-            this._element_ = null;
+            this._elementIdentifier_ = null;
             return;
         }
 
@@ -275,9 +275,9 @@ public final class ABlock extends PBlock
             return;
         }
 
-        if(this._set_ == child)
+        if(this._setIdentifier_ == child)
         {
-            this._set_ = null;
+            this._setIdentifier_ = null;
             return;
         }
 
@@ -312,9 +312,9 @@ public final class ABlock extends PBlock
             return;
         }
 
-        if(this._element_ == oldChild)
+        if(this._elementIdentifier_ == oldChild)
         {
-            setElement((TElement) newChild);
+            setElementIdentifier((TElementIdentifier) newChild);
             return;
         }
 
@@ -324,9 +324,9 @@ public final class ABlock extends PBlock
             return;
         }
 
-        if(this._set_ == oldChild)
+        if(this._setIdentifier_ == oldChild)
         {
-            setSet((TSet) newChild);
+            setSetIdentifier((TSetIdentifier) newChild);
             return;
         }
 

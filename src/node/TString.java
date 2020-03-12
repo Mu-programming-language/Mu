@@ -5,14 +5,14 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TSuchAs extends Token
+public final class TString extends Token
 {
-    public TSuchAs(String text)
+    public TString(String text)
     {
         setText(text);
     }
 
-    public TSuchAs(String text, int line, int pos)
+    public TString(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TSuchAs extends Token
     @Override
     public Object clone()
     {
-      return new TSuchAs(getText(), getLine(), getPos());
+      return new TString(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTSuchAs(this);
+        ((Analysis) sw).caseTString(this);
     }
 }

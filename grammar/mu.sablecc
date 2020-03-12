@@ -1,28 +1,24 @@
 Helpers
-	lowercase = ['a'..'z'];
-	uppercase = ['A'..'Z'];
-	letter = lowercase | uppercase;
+	lower_case = ['a'..'z'];
+	upper_case = ['A'..'Z'];
+	letter = lower_case | upper_case;
 	digit = ['0'..'9'];
 	space = ' ';
 	tab = 9;
 	lf = 10;
 	cr = 13;
+	all = [0..0xFFFF];
 	eol = cr lf | cr | lf;
 	blank = (space | tab | eol);
-	allexcepteol = [0..9] | [11..12] | [14..127];
-	all = allexcepteol | eol;
+	all_except_eol = [all - [cr + lf]];
+	all_except_double_quote = [all - '"'];
 
 Tokens
 	let = 'let';
 	proof = 'proof';
 	statement = 'statement';
-/*
-	real = 'R';
-	natural = 'N';
-	integer = 'Z';
-	rational = 'Q';
-	complex = 'C';
-*/
+	question = 'question';
+
 	not = '¬' | 'not';
 
 	empty_set = '∅';
@@ -36,9 +32,12 @@ Tokens
 	for_all = '∀' | 'forall';
 	exist = '∃' | 'exists';
 
-	such_as = '|';
+	such_as = '|' | 'suchas';
 	comma = ',';
 	semicolon = ';';
+	column = ':';
+	diesis = '#';
+	implication = '=>';
 
 	logical_and = '∧' | 'and';
 	logical_or = '∨' | 'or';
@@ -50,6 +49,10 @@ Tokens
 	superset_of = '⊃' | 'supersetof';
 	element_of = '∈' | 'elementof';
 	contains_as_member = '∋' | 'containsasmember';
+	not_a_subset_of = '⊄';
+	not_a_superset_of = '⊅';
+	not_an_element_of = '∉';
+	does_not_contain_as_member = '∌';
 
 	left_brace = '{';
 	right_brace = '}';
@@ -69,13 +72,15 @@ Tokens
 	neither_greater_than_nor_equal_to = '≱' | '!>=';
 	neither_less_than_nor_equal_to = '≰' | '!<=';
 
-	set = uppercase;
-	element = lowercase;
 	number = '0' | (['1'..'9'] ['0'..'9']*);
+	set_identifier = upper_case;
+	element_identifier = lower_case;
 	identifier = letter (letter | digit)*;
+	question_number = '#' digit letter?;
+	string = '"' all_except_double_quote* '"';
 
 	blank = blank+;
-	short_comment = '//' allexcepteol* eol?;
+	short_comment = '//' all_except_eol* eol;
 	long_comment = '/*' all '*/';
 
 Ignored Tokens
@@ -85,9 +90,29 @@ Ignored Tokens
 
 Productions
 	program =
-		block;
-	block =
-		left_brace element element_of set such_as expression right_brace;
+		{statement_instruction} statement column statement_instruction_list |
+		{question_instruction} question column question_instruction_list |
+		{proof_instruction} proof column proof_instruction;
+	statement_instruction_list =
+		statement_instruction additional_statement_instruction* semicolon;
+	additional_statement_instruction =
+		comma statement_instruction;
+	statement_instruction =
+		{declaration} let set |
+		{assignment} set_identifier equal_to set |
+		{definition} let set_identifier equal_to set;
+	question_instruction_list =
+		question_instruction additional_question_instruction* semicolon;
+	additional_question_instruction =
+		comma question_instruction;
+	question_instruction =
+		question_number column string;
+
+	proof_instruction =
+		;
+
+	set =
+		left_brace element_identifier element_of set_identifier such_as expression right_brace;
 	expression =
 		{comparison} comparison |
 		{logical_and} expression logical_and comparison |
@@ -115,5 +140,5 @@ Productions
 		{modulo} factor modulo term;
 	term =
 		{number} number |
-		{element} element |
+		{element} element_identifier |
 		{expression} left_parenthesis expression right_parenthesis;

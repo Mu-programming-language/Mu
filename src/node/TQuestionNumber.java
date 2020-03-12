@@ -5,14 +5,14 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TElement extends Token
+public final class TQuestionNumber extends Token
 {
-    public TElement(String text)
+    public TQuestionNumber(String text)
     {
         setText(text);
     }
 
-    public TElement(String text, int line, int pos)
+    public TQuestionNumber(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TElement extends Token
     @Override
     public Object clone()
     {
-      return new TElement(getText(), getLine(), getPos());
+      return new TQuestionNumber(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTElement(this);
+        ((Analysis) sw).caseTQuestionNumber(this);
     }
 }

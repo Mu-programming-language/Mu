@@ -7,7 +7,7 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AElementTerm extends PTerm
 {
-    private TElement _element_;
+    private TElementIdentifier _elementIdentifier_;
 
     public AElementTerm()
     {
@@ -15,10 +15,10 @@ public final class AElementTerm extends PTerm
     }
 
     public AElementTerm(
-        @SuppressWarnings("hiding") TElement _element_)
+        @SuppressWarnings("hiding") TElementIdentifier _elementIdentifier_)
     {
         // Constructor
-        setElement(_element_);
+        setElementIdentifier(_elementIdentifier_);
 
     }
 
@@ -26,7 +26,7 @@ public final class AElementTerm extends PTerm
     public Object clone()
     {
         return new AElementTerm(
-            cloneNode(this._element_));
+            cloneNode(this._elementIdentifier_));
     }
 
     @Override
@@ -35,16 +35,16 @@ public final class AElementTerm extends PTerm
         ((Analysis) sw).caseAElementTerm(this);
     }
 
-    public TElement getElement()
+    public TElementIdentifier getElementIdentifier()
     {
-        return this._element_;
+        return this._elementIdentifier_;
     }
 
-    public void setElement(TElement node)
+    public void setElementIdentifier(TElementIdentifier node)
     {
-        if(this._element_ != null)
+        if(this._elementIdentifier_ != null)
         {
-            this._element_.parent(null);
+            this._elementIdentifier_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AElementTerm extends PTerm
             node.parent(this);
         }
 
-        this._element_ = node;
+        this._elementIdentifier_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._element_);
+            + toString(this._elementIdentifier_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._element_ == child)
+        if(this._elementIdentifier_ == child)
         {
-            this._element_ = null;
+            this._elementIdentifier_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AElementTerm extends PTerm
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._element_ == oldChild)
+        if(this._elementIdentifier_ == oldChild)
         {
-            setElement((TElement) newChild);
+            setElementIdentifier((TElementIdentifier) newChild);
             return;
         }
 

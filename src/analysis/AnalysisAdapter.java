@@ -75,13 +75,79 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAProgram(AProgram node)
+    public void caseAStatementInstructionProgram(AStatementInstructionProgram node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseABlock(ABlock node)
+    public void caseAQuestionInstructionProgram(AQuestionInstructionProgram node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAProofInstructionProgram(AProofInstructionProgram node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAStatementInstructionList(AStatementInstructionList node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAdditionalStatementInstruction(AAdditionalStatementInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADeclarationStatementInstruction(ADeclarationStatementInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAssignmentStatementInstruction(AAssignmentStatementInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADefinitionStatementInstruction(ADefinitionStatementInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAQuestionInstructionList(AQuestionInstructionList node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAQuestionInstruction(AQuestionInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAProofInstruction(AProofInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASet(ASet node)
     {
         defaultCase(node);
     }
@@ -249,6 +315,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTQuestion(TQuestion node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTNot(TNot node)
     {
         defaultCase(node);
@@ -321,6 +393,24 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTColumn(TColumn node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTDiesis(TDiesis node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTImplication(TImplication node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTLogicalAnd(TLogicalAnd node)
     {
         defaultCase(node);
@@ -364,6 +454,30 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTContainsAsMember(TContainsAsMember node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNotASubsetOf(TNotASubsetOf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNotASupersetOf(TNotASupersetOf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNotAnElementOf(TNotAnElementOf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTDoesNotContainAsMember(TDoesNotContainAsMember node)
     {
         defaultCase(node);
     }
@@ -465,25 +579,37 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTSet(TSet node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTElement(TElement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTNumber(TNumber node)
     {
         defaultCase(node);
     }
 
     @Override
+    public void caseTSetIdentifier(TSetIdentifier node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTElementIdentifier(TElementIdentifier node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTIdentifier(TIdentifier node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTQuestionNumber(TQuestionNumber node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTString(TString node)
     {
         defaultCase(node);
     }
