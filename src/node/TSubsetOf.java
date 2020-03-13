@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TSubsetOf extends Token
 {
-    public TSubsetOf(String text)
+    public TSubsetOf()
     {
-        setText(text);
+        super.setText("⊂");
     }
 
-    public TSubsetOf(String text, int line, int pos)
+    public TSubsetOf(int line, int pos)
     {
-        setText(text);
+        super.setText("⊂");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TSubsetOf extends Token
     @Override
     public Object clone()
     {
-      return new TSubsetOf(getText(), getLine(), getPos());
+      return new TSubsetOf(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTSubsetOf(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TSubsetOf text.");
     }
 }

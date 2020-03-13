@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TContainsAsMember extends Token
 {
-    public TContainsAsMember(String text)
+    public TContainsAsMember()
     {
-        setText(text);
+        super.setText("∋");
     }
 
-    public TContainsAsMember(String text, int line, int pos)
+    public TContainsAsMember(int line, int pos)
     {
-        setText(text);
+        super.setText("∋");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TContainsAsMember extends Token
     @Override
     public Object clone()
     {
-      return new TContainsAsMember(getText(), getLine(), getPos());
+      return new TContainsAsMember(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTContainsAsMember(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TContainsAsMember text.");
     }
 }

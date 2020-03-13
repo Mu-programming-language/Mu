@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TForAll extends Token
 {
-    public TForAll(String text)
+    public TForAll()
     {
-        setText(text);
+        super.setText("∀");
     }
 
-    public TForAll(String text, int line, int pos)
+    public TForAll(int line, int pos)
     {
-        setText(text);
+        super.setText("∀");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TForAll extends Token
     @Override
     public Object clone()
     {
-      return new TForAll(getText(), getLine(), getPos());
+      return new TForAll(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTForAll(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TForAll text.");
     }
 }

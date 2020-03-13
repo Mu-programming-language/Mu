@@ -9,12 +9,12 @@ public final class TQuestion extends Token
 {
     public TQuestion()
     {
-        super.setText("question");
+        super.setText("Question");
     }
 
     public TQuestion(int line, int pos)
     {
-        super.setText("question");
+        super.setText("Question");
         setLine(line);
         setPos(pos);
     }

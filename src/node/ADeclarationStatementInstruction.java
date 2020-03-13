@@ -8,7 +8,7 @@ import analysis.*;
 public final class ADeclarationStatementInstruction extends PStatementInstruction
 {
     private TLet _let_;
-    private PSet _set_;
+    private TSetIdentifier _setIdentifier_;
 
     public ADeclarationStatementInstruction()
     {
@@ -17,12 +17,12 @@ public final class ADeclarationStatementInstruction extends PStatementInstructio
 
     public ADeclarationStatementInstruction(
         @SuppressWarnings("hiding") TLet _let_,
-        @SuppressWarnings("hiding") PSet _set_)
+        @SuppressWarnings("hiding") TSetIdentifier _setIdentifier_)
     {
         // Constructor
         setLet(_let_);
 
-        setSet(_set_);
+        setSetIdentifier(_setIdentifier_);
 
     }
 
@@ -31,7 +31,7 @@ public final class ADeclarationStatementInstruction extends PStatementInstructio
     {
         return new ADeclarationStatementInstruction(
             cloneNode(this._let_),
-            cloneNode(this._set_));
+            cloneNode(this._setIdentifier_));
     }
 
     @Override
@@ -65,16 +65,16 @@ public final class ADeclarationStatementInstruction extends PStatementInstructio
         this._let_ = node;
     }
 
-    public PSet getSet()
+    public TSetIdentifier getSetIdentifier()
     {
-        return this._set_;
+        return this._setIdentifier_;
     }
 
-    public void setSet(PSet node)
+    public void setSetIdentifier(TSetIdentifier node)
     {
-        if(this._set_ != null)
+        if(this._setIdentifier_ != null)
         {
-            this._set_.parent(null);
+            this._setIdentifier_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class ADeclarationStatementInstruction extends PStatementInstructio
             node.parent(this);
         }
 
-        this._set_ = node;
+        this._setIdentifier_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class ADeclarationStatementInstruction extends PStatementInstructio
     {
         return ""
             + toString(this._let_)
-            + toString(this._set_);
+            + toString(this._setIdentifier_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class ADeclarationStatementInstruction extends PStatementInstructio
             return;
         }
 
-        if(this._set_ == child)
+        if(this._setIdentifier_ == child)
         {
-            this._set_ = null;
+            this._setIdentifier_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class ADeclarationStatementInstruction extends PStatementInstructio
             return;
         }
 
-        if(this._set_ == oldChild)
+        if(this._setIdentifier_ == oldChild)
         {
-            setSet((PSet) newChild);
+            setSetIdentifier((TSetIdentifier) newChild);
             return;
         }
 

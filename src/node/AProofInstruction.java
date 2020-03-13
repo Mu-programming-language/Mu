@@ -7,16 +7,46 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AProofInstruction extends PProofInstruction
 {
+    private TTagNumber _tagNumber_;
+    private TColumn _column_;
+    private PDemonstration _demonstration_;
+    private TDone _done_;
+    private TSemicolon _semicolon_;
 
     public AProofInstruction()
     {
         // Constructor
     }
 
+    public AProofInstruction(
+        @SuppressWarnings("hiding") TTagNumber _tagNumber_,
+        @SuppressWarnings("hiding") TColumn _column_,
+        @SuppressWarnings("hiding") PDemonstration _demonstration_,
+        @SuppressWarnings("hiding") TDone _done_,
+        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+    {
+        // Constructor
+        setTagNumber(_tagNumber_);
+
+        setColumn(_column_);
+
+        setDemonstration(_demonstration_);
+
+        setDone(_done_);
+
+        setSemicolon(_semicolon_);
+
+    }
+
     @Override
     public Object clone()
     {
-        return new AProofInstruction();
+        return new AProofInstruction(
+            cloneNode(this._tagNumber_),
+            cloneNode(this._column_),
+            cloneNode(this._demonstration_),
+            cloneNode(this._done_),
+            cloneNode(this._semicolon_));
     }
 
     @Override
@@ -25,16 +55,176 @@ public final class AProofInstruction extends PProofInstruction
         ((Analysis) sw).caseAProofInstruction(this);
     }
 
+    public TTagNumber getTagNumber()
+    {
+        return this._tagNumber_;
+    }
+
+    public void setTagNumber(TTagNumber node)
+    {
+        if(this._tagNumber_ != null)
+        {
+            this._tagNumber_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._tagNumber_ = node;
+    }
+
+    public TColumn getColumn()
+    {
+        return this._column_;
+    }
+
+    public void setColumn(TColumn node)
+    {
+        if(this._column_ != null)
+        {
+            this._column_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._column_ = node;
+    }
+
+    public PDemonstration getDemonstration()
+    {
+        return this._demonstration_;
+    }
+
+    public void setDemonstration(PDemonstration node)
+    {
+        if(this._demonstration_ != null)
+        {
+            this._demonstration_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._demonstration_ = node;
+    }
+
+    public TDone getDone()
+    {
+        return this._done_;
+    }
+
+    public void setDone(TDone node)
+    {
+        if(this._done_ != null)
+        {
+            this._done_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._done_ = node;
+    }
+
+    public TSemicolon getSemicolon()
+    {
+        return this._semicolon_;
+    }
+
+    public void setSemicolon(TSemicolon node)
+    {
+        if(this._semicolon_ != null)
+        {
+            this._semicolon_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._semicolon_ = node;
+    }
+
     @Override
     public String toString()
     {
-        return "";
+        return ""
+            + toString(this._tagNumber_)
+            + toString(this._column_)
+            + toString(this._demonstration_)
+            + toString(this._done_)
+            + toString(this._semicolon_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
+        if(this._tagNumber_ == child)
+        {
+            this._tagNumber_ = null;
+            return;
+        }
+
+        if(this._column_ == child)
+        {
+            this._column_ = null;
+            return;
+        }
+
+        if(this._demonstration_ == child)
+        {
+            this._demonstration_ = null;
+            return;
+        }
+
+        if(this._done_ == child)
+        {
+            this._done_ = null;
+            return;
+        }
+
+        if(this._semicolon_ == child)
+        {
+            this._semicolon_ = null;
+            return;
+        }
+
         throw new RuntimeException("Not a child.");
     }
 
@@ -42,6 +232,36 @@ public final class AProofInstruction extends PProofInstruction
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
+        if(this._tagNumber_ == oldChild)
+        {
+            setTagNumber((TTagNumber) newChild);
+            return;
+        }
+
+        if(this._column_ == oldChild)
+        {
+            setColumn((TColumn) newChild);
+            return;
+        }
+
+        if(this._demonstration_ == oldChild)
+        {
+            setDemonstration((PDemonstration) newChild);
+            return;
+        }
+
+        if(this._done_ == oldChild)
+        {
+            setDone((TDone) newChild);
+            return;
+        }
+
+        if(this._semicolon_ == oldChild)
+        {
+            setSemicolon((TSemicolon) newChild);
+            return;
+        }
+
         throw new RuntimeException("Not a child.");
     }
 }

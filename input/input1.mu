@@ -1,31 +1,42 @@
-// input1
+set theory;
 
+Statement:
+	let A = {x ∈ R | x ≤ 0},
+	let B = {x ∈ R | x ≥ 0},
+	let C = {x ∈ R | x ≥ 0 ∧ x ≤ 1},
+	let D = {x ∈ R | 2*x ≤ 0},
+	let E,
+	E = {x ∈ R | 2*x ≤ 0};
+//	let E = {(x, y) ∈ R² | x² + y² = 1};
 
-question:
-	#1: "show A = B",
-	#2: "show A ≠ C",
-	#3: "show E ⊂ F";
-proof:
-	#1:
-		let x ∈ A,
-		=> x < 0,
-		=> x ∈ B,
-		=> A ⊂ B,
+Question:
+	#1: show A ≠ B,
+	#2: show C ⊂ B,
+	#3: show A = D;
 
-		let x ∈ B,
-		=> x < 0,
-		=> x ∈ A,
-		=> B ⊂ B,
-
-		=> A = B,
-		eureka;
-	#2:
-		-1 ∈ A ∧ -1 ∉ B,
-		=> A ≠ C,
-		eureka;
+Proof:
+/*	#1:
+		1 ∈ B ∧ 1 ∉ A
+		=> A ≠ C;
+		done;
+*/	#2:
+		∀ x ∈ C, x ≥ 0 ∧ x ≤ 1
+		=> ∀ x ∈ C, x ≥ 0
+		=> C ⊂ B;
+		done;
 	#3:
-		let x ∈ E,
-		=> x = 5,
-		=> x > 0 ∧ x < 10,
-		=> E ⊂ F,
-		eureka;
+		∀ x ∈ A, x ≤ 0
+		=> ∀ x ∈ A, 2*x ≤ 0
+		=> A ⊂ D;
+
+		∀ x ∈ D, 2*x ≤ 0
+		=> ∀ x ∈ D, x ≤ 0
+		=> D ⊂ A;
+
+		A ⊂ D ∧ D ⊂ A => A = D;
+		done;
+	#3:
+		∀ x ∈ A, x ≤ 0
+		<=> ∀ x ∈ D, 2*x ≤ 0
+		<=> A = D;
+		done;

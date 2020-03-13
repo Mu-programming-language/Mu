@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TSupersetOf extends Token
 {
-    public TSupersetOf(String text)
+    public TSupersetOf()
     {
-        setText(text);
+        super.setText("⊃");
     }
 
-    public TSupersetOf(String text, int line, int pos)
+    public TSupersetOf(int line, int pos)
     {
-        setText(text);
+        super.setText("⊃");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TSupersetOf extends Token
     @Override
     public Object clone()
     {
-      return new TSupersetOf(getText(), getLine(), getPos());
+      return new TSupersetOf(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTSupersetOf(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TSupersetOf text.");
     }
 }

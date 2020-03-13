@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TUnion extends Token
 {
-    public TUnion(String text)
+    public TUnion()
     {
-        setText(text);
+        super.setText("∪");
     }
 
-    public TUnion(String text, int line, int pos)
+    public TUnion(int line, int pos)
     {
-        setText(text);
+        super.setText("∪");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TUnion extends Token
     @Override
     public Object clone()
     {
-      return new TUnion(getText(), getLine(), getPos());
+      return new TUnion(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTUnion(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TUnion text.");
     }
 }

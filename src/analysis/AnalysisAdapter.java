@@ -75,19 +75,31 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAStatementInstructionProgram(AStatementInstructionProgram node)
+    public void caseAProgram(AProgram node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAQuestionInstructionProgram(AQuestionInstructionProgram node)
+    public void caseAInstructions(AInstructions node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAProofInstructionProgram(AProofInstructionProgram node)
+    public void caseAStatementBlock(AStatementBlock node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAQuestionBlock(AQuestionBlock node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAProofBlock(AProofBlock node)
     {
         defaultCase(node);
     }
@@ -141,163 +153,343 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAProofInstructionList(AProofInstructionList node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAdditionalProofInstruction(AAdditionalProofInstruction node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAProofInstruction(AProofInstruction node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseASet(ASet node)
+    public void caseADemonstration(ADemonstration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAComparisonExpression(AComparisonExpression node)
+    public void caseAPropositionList(APropositionList node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseALogicalAndExpression(ALogicalAndExpression node)
+    public void caseAImplicationAdditionalProposition(AImplicationAdditionalProposition node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseALogicalOrExpression(ALogicalOrExpression node)
+    public void caseAEquivalenceAdditionalProposition(AEquivalenceAdditionalProposition node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAArithmeticComparison(AArithmeticComparison node)
+    public void caseAExpressionProposition(AExpressionProposition node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAEqualToComparison(AEqualToComparison node)
+    public void caseAForAllProposition(AForAllProposition node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAGreaterThanComparison(AGreaterThanComparison node)
+    public void caseAExistProposition(AExistProposition node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseALessThanComparison(ALessThanComparison node)
+    public void caseAExpressionExpression(AExpressionExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAGreaterThanOrEqualToComparison(AGreaterThanOrEqualToComparison node)
+    public void caseASetExpressionExpression(ASetExpressionExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseALessThanOrEqualToComparison(ALessThanOrEqualToComparison node)
+    public void caseAElementExpressionExpression(AElementExpressionExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANotEqualToComparison(ANotEqualToComparison node)
+    public void caseAComparisonSetExpression(AComparisonSetExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANotGreaterThanComparison(ANotGreaterThanComparison node)
+    public void caseALogicalAndSetExpression(ALogicalAndSetExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANotLessThanComparison(ANotLessThanComparison node)
+    public void caseALogicalOrSetExpression(ALogicalOrSetExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANeitherGreaterThanNorEqualToComparison(ANeitherGreaterThanNorEqualToComparison node)
+    public void caseAArithmeticSetComparison(AArithmeticSetComparison node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANeitherLessThanNorEqualToComparison(ANeitherLessThanNorEqualToComparison node)
+    public void caseAEqualToSetComparison(AEqualToSetComparison node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFactorArithmetic(AFactorArithmetic node)
+    public void caseANotEqualToSetComparison(ANotEqualToSetComparison node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAPlusArithmetic(APlusArithmetic node)
+    public void caseASubsetOfSetComparison(ASubsetOfSetComparison node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMinusArithmetic(AMinusArithmetic node)
+    public void caseANotASubsetOfSetComparison(ANotASubsetOfSetComparison node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseATermFactor(ATermFactor node)
+    public void caseASupersetOfSetComparison(ASupersetOfSetComparison node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMultiplicationFactor(AMultiplicationFactor node)
+    public void caseANotASupersetOfSetComparison(ANotASupersetOfSetComparison node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseADivisionFactor(ADivisionFactor node)
+    public void caseAFactorSetArithmetic(AFactorSetArithmetic node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAModuloFactor(AModuloFactor node)
+    public void caseAPlusSetArithmetic(APlusSetArithmetic node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANumberTerm(ANumberTerm node)
+    public void caseADeprivedOfSetArithmetic(ADeprivedOfSetArithmetic node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAElementTerm(AElementTerm node)
+    public void caseATermSetFactor(ATermSetFactor node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpressionTerm(AExpressionTerm node)
+    public void caseAMultSetFactor(AMultSetFactor node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTLet(TLet node)
+    public void caseATermSetExponent(ATermSetExponent node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpSetExponent(AExpSetExponent node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASetSetTerm(ASetSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpressionSetTerm(AExpressionSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComparisonElementExpression(AComparisonElementExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALogicalAndElementExpression(ALogicalAndElementExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALogicalOrElementExpression(ALogicalOrElementExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAArithmeticElementComparison(AArithmeticElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEqualToElementComparison(AEqualToElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotEqualToElementComparison(ANotEqualToElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAGreaterThanElementComparison(AGreaterThanElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotGreaterThanElementComparison(ANotGreaterThanElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALessThanElementComparison(ALessThanElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotLessThanElementComparison(ANotLessThanElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAGreaterThanOrEqualToElementComparison(AGreaterThanOrEqualToElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANeitherGreaterThanNorEqualToElementComparison(ANeitherGreaterThanNorEqualToElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALessThanOrEqualToElementComparison(ALessThanOrEqualToElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANeitherLessThanNorEqualToElementComparison(ANeitherLessThanNorEqualToElementComparison node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFactorElementArithmetic(AFactorElementArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPlusElementArithmetic(APlusElementArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMinusElementArithmetic(AMinusElementArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATermElementFactor(ATermElementFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMultiplicationElementFactor(AMultiplicationElementFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADivisionElementFactor(ADivisionElementFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAModuloElementFactor(AModuloElementFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANumberElementTerm(ANumberElementTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElementElementTerm(AElementElementTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpressionElementTerm(AExpressionElementTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTCategory(TCategory node)
     {
         defaultCase(node);
     }
@@ -316,6 +508,30 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTQuestion(TQuestion node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTLet(TLet node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTDone(TDone node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTShow(TShow node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTDeprivedOf(TDeprivedOf node)
     {
         defaultCase(node);
     }
@@ -363,6 +579,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTPower(TPower node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTForAll(TForAll node)
     {
         defaultCase(node);
@@ -405,7 +627,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTImplication(TImplication node)
+    public void caseTImplicationSign(TImplicationSign node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTEquivalenceSign(TEquivalenceSign node)
     {
         defaultCase(node);
     }
@@ -447,18 +675,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTElementOf(TElementOf node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTContainsAsMember(TContainsAsMember node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTNotASubsetOf(TNotASubsetOf node)
     {
         defaultCase(node);
@@ -466,6 +682,18 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTNotASupersetOf(TNotASupersetOf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTElementOf(TElementOf node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTContainsAsMember(TContainsAsMember node)
     {
         defaultCase(node);
     }
@@ -579,6 +807,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTTagNumber(TTagNumber node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTNumber(TNumber node)
     {
         defaultCase(node);
@@ -592,18 +826,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTElementIdentifier(TElementIdentifier node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTIdentifier(TIdentifier node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTQuestionNumber(TQuestionNumber node)
     {
         defaultCase(node);
     }

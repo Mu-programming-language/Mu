@@ -12,14 +12,22 @@ Helpers
 	blank = (space | tab | eol);
 	all_except_eol = [all - [cr + lf]];
 	all_except_double_quote = [all - '"'];
+/*	all_except_end_of_comment = [all -]*/
 
 Tokens
-	let = 'let';
-	proof = 'proof';
-	statement = 'statement';
-	question = 'question';
+	category = 'analysis' | 'algebra' | 'set theory' | 'geometry' | 'statistic and probability';
 
-	not = '¬' | 'not';
+	proof = 'Proof';
+	statement = 'Statement';
+	question = 'Question';
+
+	let = 'let';
+	done = 'done';
+	show = 'show';
+
+	deprived_of = '\';
+
+	not = '¬' /*| 'not'*/;
 
 	empty_set = '∅';
 
@@ -28,29 +36,32 @@ Tokens
 	modulo = '%';
 	plus = '+';
 	minus = '-';
+	power = '^';
 
-	for_all = '∀' | 'forall';
-	exist = '∃' | 'exists';
+	for_all = '∀' /*| 'forall'*/;
+	exist = '∃' /*| 'exists'*/;
 
-	such_as = '|' | 'suchas';
+	such_as = '|' /*| 'suchas'*/;
 	comma = ',';
 	semicolon = ';';
 	column = ':';
 	diesis = '#';
-	implication = '=>';
+	implication_sign = '=>';
+	equivalence_sign = '<=>';
 
-	logical_and = '∧' | 'and';
-	logical_or = '∨' | 'or';
+	logical_and = '∧' /*| 'and'*/;
+	logical_or = '∨' /*| 'or'*/;
 
-	union = '∪' | 'union';
-	intersection = '∩' | 'intersection';
+	union = '∪' /*| 'union'*/;
+	intersection = '∩' /*| 'intersection'*/;
 
-	subset_of = '⊂' | 'subsetof';
-	superset_of = '⊃' | 'supersetof';
-	element_of = '∈' | 'elementof';
-	contains_as_member = '∋' | 'containsasmember';
+	subset_of = '⊂' /*| 'subsetof'*/;
+	superset_of = '⊃' /*| 'supersetof'*/;
 	not_a_subset_of = '⊄';
 	not_a_superset_of = '⊅';
+
+	element_of = '∈' /*| 'elementof'*/;
+	contains_as_member = '∋' /*| 'containsasmember'*/;
 	not_an_element_of = '∉';
 	does_not_contain_as_member = '∌';
 
@@ -72,16 +83,18 @@ Tokens
 	neither_greater_than_nor_equal_to = '≱' | '!>=';
 	neither_less_than_nor_equal_to = '≰' | '!<=';
 
-	number = '0' | (['1'..'9'] ['0'..'9']*);
+	tag_number = '#' digit+ letter?;
+
+	number = '0' | (['1'..'9'] digit*);
+
 	set_identifier = upper_case;
 	element_identifier = lower_case;
-	identifier = letter (letter | digit)*;
-	question_number = '#' digit letter?;
+
 	string = '"' all_except_double_quote* '"';
 
 	blank = blank+;
 	short_comment = '//' all_except_eol* eol;
-	long_comment = '/*' all '*/';
+	long_comment = '/*' all* '*/';
 
 Ignored Tokens
 	blank,
@@ -90,55 +103,105 @@ Ignored Tokens
 
 Productions
 	program =
-		{statement_instruction} statement column statement_instruction_list |
-		{question_instruction} question column question_instruction_list |
-		{proof_instruction} proof column proof_instruction;
+		category semicolon instructions;
+	instructions =
+		statement_block question_block proof_block;
+	statement_block =
+		statement column statement_instruction_list;
+	question_block =
+		question column question_instruction_list;
+	proof_block =
+		proof column proof_instruction_list;
 	statement_instruction_list =
 		statement_instruction additional_statement_instruction* semicolon;
 	additional_statement_instruction =
 		comma statement_instruction;
 	statement_instruction =
-		{declaration} let set |
-		{assignment} set_identifier equal_to set |
-		{definition} let set_identifier equal_to set;
+		{declaration} let set_identifier |
+		{assignment} [new]:set_identifier equal_to left_brace element_identifier element_of set_identifier such_as element_expression right_brace |
+		{definition} let [new]:set_identifier equal_to left_brace element_identifier element_of set_identifier such_as element_expression right_brace;
 	question_instruction_list =
 		question_instruction additional_question_instruction* semicolon;
 	additional_question_instruction =
 		comma question_instruction;
 	question_instruction =
-		question_number column string;
-
+		tag_number column show set_expression;
+	proof_instruction_list =
+		proof_instruction additional_proof_instruction*;
+	additional_proof_instruction =
+		proof_instruction;
 	proof_instruction =
-		;
+		tag_number column demonstration done semicolon;
 
-	set =
-		left_brace element_identifier element_of set_identifier such_as expression right_brace;
+	demonstration =
+		proposition_list+;
+	proposition_list =
+		proposition additional_proposition* semicolon;
+	additional_proposition =
+		{implication} implication_sign proposition |
+		{equivalence} equivalence_sign proposition;
+	proposition =
+		{expression} expression |
+		{for_all} for_all element_identifier element_of set_identifier comma expression |
+		{exist} exist element_identifier element_of set_identifier comma expression;
+
 	expression =
-		{comparison} comparison |
-		{logical_and} expression logical_and comparison |
-		{logical_or} expression logical_or comparison;
-	comparison =
-		{arithmetic} arithmetic |
-		{equal_to} comparison equal_to arithmetic |
-		{greater_than} comparison greater_than arithmetic |
-		{less_than} comparison less_than arithmetic |
-		{greater_than_or_equal_to} comparison greater_than_or_equal_to arithmetic |
-		{less_than_or_equal_to} comparison less_than_or_equal_to arithmetic |
-		{not_equal_to} comparison not_equal_to arithmetic |
-		{not_greater_than} comparison not_greater_than arithmetic |
-		{not_less_than} comparison not_less_than arithmetic |
-		{neither_greater_than_nor_equal_to} comparison neither_greater_than_nor_equal_to arithmetic |
-		{neither_less_than_nor_equal_to} comparison neither_less_than_nor_equal_to arithmetic;
-	arithmetic =
-		{factor} factor |
-		{plus} arithmetic plus factor |
-		{minus} arithmetic minus factor;
-	factor =
-		{term} term |
-		{multiplication} factor multiplication term |
-		{division} factor division term |
-		{modulo} factor modulo term;
-	term =
+		{expression} element_expression element_of set_expression |
+		{set_expression} set_expression |
+		{element_expression} element_expression;
+
+	set_expression =
+		{comparison} set_comparison |
+		{logical_and} set_expression logical_and set_comparison |
+		{logical_or} set_expression logical_or set_comparison;
+	set_comparison =
+		{arithmetic} set_arithmetic |
+		{equal_to} set_comparison equal_to set_arithmetic |
+		{not_equal_to} set_comparison not_equal_to set_arithmetic |
+		{subset_of} set_comparison subset_of set_arithmetic |
+		{not_a_subset_of} set_comparison not_a_subset_of set_arithmetic |
+		{superset_of} set_comparison superset_of set_arithmetic |
+		{not_a_superset_of} set_comparison not_a_superset_of set_arithmetic;
+	set_arithmetic =
+		{factor} set_factor |
+		{plus} set_arithmetic plus set_factor |
+		{deprived_of} set_arithmetic deprived_of set_factor;
+	set_factor =
+		{term} set_exponent |
+		{mult} set_factor multiplication set_exponent;
+	set_exponent =
+		{term} set_term |
+		{exp} set_exponent power set_term;
+	set_term =
+		{set} set_identifier |
+		{expression} left_parenthesis set_expression right_parenthesis;
+
+	element_expression =
+		{comparison} element_comparison |
+		{logical_and} element_expression logical_and element_comparison |
+		{logical_or} element_expression logical_or element_comparison;
+	element_comparison =
+		{arithmetic} element_arithmetic |
+		{equal_to} element_comparison equal_to element_arithmetic |
+		{not_equal_to} element_comparison not_equal_to element_arithmetic |
+		{greater_than} element_comparison greater_than element_arithmetic |
+		{not_greater_than} element_comparison not_greater_than element_arithmetic |
+		{less_than} element_comparison less_than element_arithmetic |
+		{not_less_than} element_comparison not_less_than element_arithmetic |
+		{greater_than_or_equal_to} element_comparison greater_than_or_equal_to element_arithmetic |
+		{neither_greater_than_nor_equal_to} element_comparison neither_greater_than_nor_equal_to element_arithmetic |
+		{less_than_or_equal_to} element_comparison less_than_or_equal_to element_arithmetic |
+		{neither_less_than_nor_equal_to} element_comparison neither_less_than_nor_equal_to element_arithmetic;
+	element_arithmetic =
+		{factor} element_factor |
+		{plus} element_arithmetic plus element_factor |
+		{minus} element_arithmetic minus element_factor;
+	element_factor =
+		{term} element_term |
+		{multiplication} element_factor multiplication element_term |
+		{division} element_factor division element_term |
+		{modulo} element_factor modulo element_term;
+	element_term =
 		{number} number |
 		{element} element_identifier |
-		{expression} left_parenthesis expression right_parenthesis;
+		{expression} left_parenthesis element_expression right_parenthesis;

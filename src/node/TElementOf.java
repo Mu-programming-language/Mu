@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TElementOf extends Token
 {
-    public TElementOf(String text)
+    public TElementOf()
     {
-        setText(text);
+        super.setText("∈");
     }
 
-    public TElementOf(String text, int line, int pos)
+    public TElementOf(int line, int pos)
     {
-        setText(text);
+        super.setText("∈");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TElementOf extends Token
     @Override
     public Object clone()
     {
-      return new TElementOf(getText(), getLine(), getPos());
+      return new TElementOf(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTElementOf(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TElementOf text.");
     }
 }

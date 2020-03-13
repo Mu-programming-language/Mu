@@ -9,12 +9,12 @@ public final class TStatement extends Token
 {
     public TStatement()
     {
-        super.setText("statement");
+        super.setText("Statement");
     }
 
     public TStatement(int line, int pos)
     {
-        super.setText("statement");
+        super.setText("Statement");
         setLine(line);
         setPos(pos);
     }

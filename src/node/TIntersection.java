@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TIntersection extends Token
 {
-    public TIntersection(String text)
+    public TIntersection()
     {
-        setText(text);
+        super.setText("∩");
     }
 
-    public TIntersection(String text, int line, int pos)
+    public TIntersection(int line, int pos)
     {
-        setText(text);
+        super.setText("∩");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TIntersection extends Token
     @Override
     public Object clone()
     {
-      return new TIntersection(getText(), getLine(), getPos());
+      return new TIntersection(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTIntersection(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TIntersection text.");
     }
 }

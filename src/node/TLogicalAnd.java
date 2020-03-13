@@ -7,14 +7,14 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class TLogicalAnd extends Token
 {
-    public TLogicalAnd(String text)
+    public TLogicalAnd()
     {
-        setText(text);
+        super.setText("∧");
     }
 
-    public TLogicalAnd(String text, int line, int pos)
+    public TLogicalAnd(int line, int pos)
     {
-        setText(text);
+        super.setText("∧");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TLogicalAnd extends Token
     @Override
     public Object clone()
     {
-      return new TLogicalAnd(getText(), getLine(), getPos());
+      return new TLogicalAnd(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTLogicalAnd(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TLogicalAnd text.");
     }
 }

@@ -7,9 +7,15 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AAssignmentStatementInstruction extends PStatementInstruction
 {
-    private TSetIdentifier _setIdentifier_;
+    private TSetIdentifier _new_;
     private TEqualTo _equalTo_;
-    private PSet _set_;
+    private TLeftBrace _leftBrace_;
+    private TElementIdentifier _elementIdentifier_;
+    private TElementOf _elementOf_;
+    private TSetIdentifier _setIdentifier_;
+    private TSuchAs _suchAs_;
+    private PElementExpression _elementExpression_;
+    private TRightBrace _rightBrace_;
 
     public AAssignmentStatementInstruction()
     {
@@ -17,16 +23,34 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
     }
 
     public AAssignmentStatementInstruction(
-        @SuppressWarnings("hiding") TSetIdentifier _setIdentifier_,
+        @SuppressWarnings("hiding") TSetIdentifier _new_,
         @SuppressWarnings("hiding") TEqualTo _equalTo_,
-        @SuppressWarnings("hiding") PSet _set_)
+        @SuppressWarnings("hiding") TLeftBrace _leftBrace_,
+        @SuppressWarnings("hiding") TElementIdentifier _elementIdentifier_,
+        @SuppressWarnings("hiding") TElementOf _elementOf_,
+        @SuppressWarnings("hiding") TSetIdentifier _setIdentifier_,
+        @SuppressWarnings("hiding") TSuchAs _suchAs_,
+        @SuppressWarnings("hiding") PElementExpression _elementExpression_,
+        @SuppressWarnings("hiding") TRightBrace _rightBrace_)
     {
         // Constructor
-        setSetIdentifier(_setIdentifier_);
+        setNew(_new_);
 
         setEqualTo(_equalTo_);
 
-        setSet(_set_);
+        setLeftBrace(_leftBrace_);
+
+        setElementIdentifier(_elementIdentifier_);
+
+        setElementOf(_elementOf_);
+
+        setSetIdentifier(_setIdentifier_);
+
+        setSuchAs(_suchAs_);
+
+        setElementExpression(_elementExpression_);
+
+        setRightBrace(_rightBrace_);
 
     }
 
@@ -34,9 +58,15 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
     public Object clone()
     {
         return new AAssignmentStatementInstruction(
-            cloneNode(this._setIdentifier_),
+            cloneNode(this._new_),
             cloneNode(this._equalTo_),
-            cloneNode(this._set_));
+            cloneNode(this._leftBrace_),
+            cloneNode(this._elementIdentifier_),
+            cloneNode(this._elementOf_),
+            cloneNode(this._setIdentifier_),
+            cloneNode(this._suchAs_),
+            cloneNode(this._elementExpression_),
+            cloneNode(this._rightBrace_));
     }
 
     @Override
@@ -45,16 +75,16 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
         ((Analysis) sw).caseAAssignmentStatementInstruction(this);
     }
 
-    public TSetIdentifier getSetIdentifier()
+    public TSetIdentifier getNew()
     {
-        return this._setIdentifier_;
+        return this._new_;
     }
 
-    public void setSetIdentifier(TSetIdentifier node)
+    public void setNew(TSetIdentifier node)
     {
-        if(this._setIdentifier_ != null)
+        if(this._new_ != null)
         {
-            this._setIdentifier_.parent(null);
+            this._new_.parent(null);
         }
 
         if(node != null)
@@ -67,7 +97,7 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
             node.parent(this);
         }
 
-        this._setIdentifier_ = node;
+        this._new_ = node;
     }
 
     public TEqualTo getEqualTo()
@@ -95,16 +125,16 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
         this._equalTo_ = node;
     }
 
-    public PSet getSet()
+    public TLeftBrace getLeftBrace()
     {
-        return this._set_;
+        return this._leftBrace_;
     }
 
-    public void setSet(PSet node)
+    public void setLeftBrace(TLeftBrace node)
     {
-        if(this._set_ != null)
+        if(this._leftBrace_ != null)
         {
-            this._set_.parent(null);
+            this._leftBrace_.parent(null);
         }
 
         if(node != null)
@@ -117,25 +147,181 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
             node.parent(this);
         }
 
-        this._set_ = node;
+        this._leftBrace_ = node;
+    }
+
+    public TElementIdentifier getElementIdentifier()
+    {
+        return this._elementIdentifier_;
+    }
+
+    public void setElementIdentifier(TElementIdentifier node)
+    {
+        if(this._elementIdentifier_ != null)
+        {
+            this._elementIdentifier_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._elementIdentifier_ = node;
+    }
+
+    public TElementOf getElementOf()
+    {
+        return this._elementOf_;
+    }
+
+    public void setElementOf(TElementOf node)
+    {
+        if(this._elementOf_ != null)
+        {
+            this._elementOf_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._elementOf_ = node;
+    }
+
+    public TSetIdentifier getSetIdentifier()
+    {
+        return this._setIdentifier_;
+    }
+
+    public void setSetIdentifier(TSetIdentifier node)
+    {
+        if(this._setIdentifier_ != null)
+        {
+            this._setIdentifier_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._setIdentifier_ = node;
+    }
+
+    public TSuchAs getSuchAs()
+    {
+        return this._suchAs_;
+    }
+
+    public void setSuchAs(TSuchAs node)
+    {
+        if(this._suchAs_ != null)
+        {
+            this._suchAs_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._suchAs_ = node;
+    }
+
+    public PElementExpression getElementExpression()
+    {
+        return this._elementExpression_;
+    }
+
+    public void setElementExpression(PElementExpression node)
+    {
+        if(this._elementExpression_ != null)
+        {
+            this._elementExpression_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._elementExpression_ = node;
+    }
+
+    public TRightBrace getRightBrace()
+    {
+        return this._rightBrace_;
+    }
+
+    public void setRightBrace(TRightBrace node)
+    {
+        if(this._rightBrace_ != null)
+        {
+            this._rightBrace_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._rightBrace_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._setIdentifier_)
+            + toString(this._new_)
             + toString(this._equalTo_)
-            + toString(this._set_);
+            + toString(this._leftBrace_)
+            + toString(this._elementIdentifier_)
+            + toString(this._elementOf_)
+            + toString(this._setIdentifier_)
+            + toString(this._suchAs_)
+            + toString(this._elementExpression_)
+            + toString(this._rightBrace_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._setIdentifier_ == child)
+        if(this._new_ == child)
         {
-            this._setIdentifier_ = null;
+            this._new_ = null;
             return;
         }
 
@@ -145,9 +331,45 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
             return;
         }
 
-        if(this._set_ == child)
+        if(this._leftBrace_ == child)
         {
-            this._set_ = null;
+            this._leftBrace_ = null;
+            return;
+        }
+
+        if(this._elementIdentifier_ == child)
+        {
+            this._elementIdentifier_ = null;
+            return;
+        }
+
+        if(this._elementOf_ == child)
+        {
+            this._elementOf_ = null;
+            return;
+        }
+
+        if(this._setIdentifier_ == child)
+        {
+            this._setIdentifier_ = null;
+            return;
+        }
+
+        if(this._suchAs_ == child)
+        {
+            this._suchAs_ = null;
+            return;
+        }
+
+        if(this._elementExpression_ == child)
+        {
+            this._elementExpression_ = null;
+            return;
+        }
+
+        if(this._rightBrace_ == child)
+        {
+            this._rightBrace_ = null;
             return;
         }
 
@@ -158,9 +380,9 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._setIdentifier_ == oldChild)
+        if(this._new_ == oldChild)
         {
-            setSetIdentifier((TSetIdentifier) newChild);
+            setNew((TSetIdentifier) newChild);
             return;
         }
 
@@ -170,9 +392,45 @@ public final class AAssignmentStatementInstruction extends PStatementInstruction
             return;
         }
 
-        if(this._set_ == oldChild)
+        if(this._leftBrace_ == oldChild)
         {
-            setSet((PSet) newChild);
+            setLeftBrace((TLeftBrace) newChild);
+            return;
+        }
+
+        if(this._elementIdentifier_ == oldChild)
+        {
+            setElementIdentifier((TElementIdentifier) newChild);
+            return;
+        }
+
+        if(this._elementOf_ == oldChild)
+        {
+            setElementOf((TElementOf) newChild);
+            return;
+        }
+
+        if(this._setIdentifier_ == oldChild)
+        {
+            setSetIdentifier((TSetIdentifier) newChild);
+            return;
+        }
+
+        if(this._suchAs_ == oldChild)
+        {
+            setSuchAs((TSuchAs) newChild);
+            return;
+        }
+
+        if(this._elementExpression_ == oldChild)
+        {
+            setElementExpression((PElementExpression) newChild);
+            return;
+        }
+
+        if(this._rightBrace_ == oldChild)
+        {
+            setRightBrace((TRightBrace) newChild);
             return;
         }
 
