@@ -2,6 +2,7 @@ import parser.*;
 import lexer.*;
 import node.*;
 import java.io.*;
+import interpreter.*;
 
 public class Main {
 	public static void main(String[] arguments) {
@@ -9,6 +10,12 @@ public class Main {
 		Node tree;
 		try {
 			tree = p.parse();
+
+			// FunctionTable functionTable = new FunctionTable();
+			// FunctionFinder.startAnalyse(functionTable, tree);
+			// CallVerifier.startAnalyse(functionTable, tree);
+
+			Interpreter.start(tree);
 		}
 		catch (IOException e) {
 			System.err.println("INPUT/OUTPUT ERROR: " + e.getMessage());
