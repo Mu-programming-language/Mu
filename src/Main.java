@@ -6,16 +6,28 @@ import interpreter.*;
 
 public class Main {
 	public static void main(String[] arguments) {
-		Parser p = new Parser(new Lexer(new PushbackReader(new InputStreamReader(System.in), 1024)));
-		Node tree;
+		if (arguments.length == 0) {
+			System.err.println("COMMAND-LINE ERROR: missing filename argument.");
+			System.exit(1);
+		}
+		else if (arguments.length > 1) {
+			System.err.println("COMMAND-LINE ERROR: too many arguments.");
+			System.exit(1);
+		}
 		try {
-			tree = p.parse();
+			Parser parser = new Parser(new Lexer(new PushbackReader(new FileReader(arguments[0]), 1024)));
+			Node tree;
+			tree = parser.parse();
 
 			// FunctionTable functionTable = new FunctionTable();
 			// FunctionFinder.startAnalyse(functionTable, tree);
 			// CallVerifier.startAnalyse(functionTable, tree);
 
 			Interpreter.start(tree);
+		}
+		catch (FileNotFoundException e) {
+			System.err.println("FILE NOT FOUND ERROR: " + e.getMessage() + ".");
+			System.exit(1);
 		}
 		catch (IOException e) {
 			System.err.println("INPUT/OUTPUT ERROR: " + e.getMessage());
