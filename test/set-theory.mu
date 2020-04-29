@@ -1,11 +1,11 @@
 set theory;
 
 Statement:
-	let A = {x ∈ R | x ≤ 0},
+/*	let A = {x ∈ R | x ≤ 0},
 	let B = {x ∈ R | x ≥ 0},
 	let C = {x ∈ R | x ≥ 0 ∧ x ≤ 1},
 	let D = {x ∈ R | 2*x ≤ 0},
-	let E,
+	let E,*/
 	E = {x ∈ R | 2*x ≤ 0};
 //	let E = {(x, y) ∈ R² | x² + y² = 1};
 

@@ -11,8 +11,9 @@ Helpers
 	eol = cr lf | cr | lf;
 	blank = (space | tab | eol);
 	all_except_eol = [all - [cr + lf]];
+	not_star =    [all - '*'] | eol;
+    not_star_not_slash = [all - ['*' + '/']] | eol;
 	all_except_double_quote = [all - '"'];
-/*	all_except_end_of_comment = [all -]*/
 
 Tokens
 	category = 'analysis' | 'algebra' | 'set theory' | 'geometry' | 'statistic and probability';
@@ -93,8 +94,8 @@ Tokens
 	string = '"' all_except_double_quote* '"';
 
 	blank = blank+;
-	short_comment = '//' all_except_eol* eol;
-	long_comment = '/*' all* '*/';
+	short_comment = '//' all_except_eol* eol?;
+	long_comment = '/*' not_star+ '*'+ (not_star_not_slash not_star* '*'+)* '/';
 
 Ignored Tokens
 	blank,
