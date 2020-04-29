@@ -72,6 +72,10 @@ Please read [CONTRIBUTING.md](https://github.com/Sevla8/Mu/blob/master/CONTRIBUT
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). -->
 
+## Suggestions
+
+* Use GNOME Characters to get mathematical symbols.
+
 ## Authors
 
 * **Brandon Alves Barbosa** - *Computer Sciences Student* - [Sevla8](https://github.com/Sevla8)
