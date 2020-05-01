@@ -657,7 +657,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTDiesis(TDiesis node)
+    public void caseTHashtag(THashtag node)
     {
         defaultCase(node);
     }
@@ -838,12 +838,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTNeitherLessThanNorEqualTo(TNeitherLessThanNorEqualTo node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTTagNumber(TTagNumber node)
     {
         defaultCase(node);
     }

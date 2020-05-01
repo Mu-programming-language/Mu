@@ -7,7 +7,8 @@ import analysis.*;
 @SuppressWarnings("nls")
 public final class AAskInstruction extends PAskInstruction
 {
-    private TTagNumber _tagNumber_;
+    private THashtag _hashtag_;
+    private TNumber _number_;
     private TColumn _column_;
     private TShow _show_;
     private PSetExpression _setExpression_;
@@ -18,13 +19,16 @@ public final class AAskInstruction extends PAskInstruction
     }
 
     public AAskInstruction(
-        @SuppressWarnings("hiding") TTagNumber _tagNumber_,
+        @SuppressWarnings("hiding") THashtag _hashtag_,
+        @SuppressWarnings("hiding") TNumber _number_,
         @SuppressWarnings("hiding") TColumn _column_,
         @SuppressWarnings("hiding") TShow _show_,
         @SuppressWarnings("hiding") PSetExpression _setExpression_)
     {
         // Constructor
-        setTagNumber(_tagNumber_);
+        setHashtag(_hashtag_);
+
+        setNumber(_number_);
 
         setColumn(_column_);
 
@@ -38,7 +42,8 @@ public final class AAskInstruction extends PAskInstruction
     public Object clone()
     {
         return new AAskInstruction(
-            cloneNode(this._tagNumber_),
+            cloneNode(this._hashtag_),
+            cloneNode(this._number_),
             cloneNode(this._column_),
             cloneNode(this._show_),
             cloneNode(this._setExpression_));
@@ -50,16 +55,16 @@ public final class AAskInstruction extends PAskInstruction
         ((Analysis) sw).caseAAskInstruction(this);
     }
 
-    public TTagNumber getTagNumber()
+    public THashtag getHashtag()
     {
-        return this._tagNumber_;
+        return this._hashtag_;
     }
 
-    public void setTagNumber(TTagNumber node)
+    public void setHashtag(THashtag node)
     {
-        if(this._tagNumber_ != null)
+        if(this._hashtag_ != null)
         {
-            this._tagNumber_.parent(null);
+            this._hashtag_.parent(null);
         }
 
         if(node != null)
@@ -72,7 +77,32 @@ public final class AAskInstruction extends PAskInstruction
             node.parent(this);
         }
 
-        this._tagNumber_ = node;
+        this._hashtag_ = node;
+    }
+
+    public TNumber getNumber()
+    {
+        return this._number_;
+    }
+
+    public void setNumber(TNumber node)
+    {
+        if(this._number_ != null)
+        {
+            this._number_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._number_ = node;
     }
 
     public TColumn getColumn()
@@ -154,7 +184,8 @@ public final class AAskInstruction extends PAskInstruction
     public String toString()
     {
         return ""
-            + toString(this._tagNumber_)
+            + toString(this._hashtag_)
+            + toString(this._number_)
             + toString(this._column_)
             + toString(this._show_)
             + toString(this._setExpression_);
@@ -164,9 +195,15 @@ public final class AAskInstruction extends PAskInstruction
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._tagNumber_ == child)
+        if(this._hashtag_ == child)
         {
-            this._tagNumber_ = null;
+            this._hashtag_ = null;
+            return;
+        }
+
+        if(this._number_ == child)
+        {
+            this._number_ = null;
             return;
         }
 
@@ -195,9 +232,15 @@ public final class AAskInstruction extends PAskInstruction
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._tagNumber_ == oldChild)
+        if(this._hashtag_ == oldChild)
         {
-            setTagNumber((TTagNumber) newChild);
+            setHashtag((THashtag) newChild);
+            return;
+        }
+
+        if(this._number_ == oldChild)
+        {
+            setNumber((TNumber) newChild);
             return;
         }
 

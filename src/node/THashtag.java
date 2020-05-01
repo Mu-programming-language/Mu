@@ -5,14 +5,14 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TDiesis extends Token
+public final class THashtag extends Token
 {
-    public TDiesis()
+    public THashtag()
     {
         super.setText("#");
     }
 
-    public TDiesis(int line, int pos)
+    public THashtag(int line, int pos)
     {
         super.setText("#");
         setLine(line);
@@ -22,18 +22,18 @@ public final class TDiesis extends Token
     @Override
     public Object clone()
     {
-      return new TDiesis(getLine(), getPos());
+      return new THashtag(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTDiesis(this);
+        ((Analysis) sw).caseTHashtag(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TDiesis text.");
+        throw new RuntimeException("Cannot change THashtag text.");
     }
 }

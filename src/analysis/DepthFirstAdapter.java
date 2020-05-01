@@ -444,9 +444,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAAskInstruction(AAskInstruction node)
     {
         inAAskInstruction(node);
-        if(node.getTagNumber() != null)
+        if(node.getHashtag() != null)
         {
-            node.getTagNumber().apply(this);
+            node.getHashtag().apply(this);
+        }
+        if(node.getNumber() != null)
+        {
+            node.getNumber().apply(this);
         }
         if(node.getColumn() != null)
         {
@@ -526,9 +530,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAProofInstruction(AProofInstruction node)
     {
         inAProofInstruction(node);
-        if(node.getTagNumber() != null)
+        if(node.getHashtag() != null)
         {
-            node.getTagNumber().apply(this);
+            node.getHashtag().apply(this);
+        }
+        if(node.getNumber() != null)
+        {
+            node.getNumber().apply(this);
         }
         if(node.getColumn() != null)
         {

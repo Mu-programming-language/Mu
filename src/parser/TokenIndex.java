@@ -148,7 +148,7 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTDiesis(@SuppressWarnings("unused") TDiesis node)
+    public void caseTHashtag(@SuppressWarnings("unused") THashtag node)
     {
         this.index = 23;
     }
@@ -334,38 +334,32 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTTagNumber(@SuppressWarnings("unused") TTagNumber node)
+    public void caseTNumber(@SuppressWarnings("unused") TNumber node)
     {
         this.index = 54;
     }
 
     @Override
-    public void caseTNumber(@SuppressWarnings("unused") TNumber node)
+    public void caseTSetIdentifier(@SuppressWarnings("unused") TSetIdentifier node)
     {
         this.index = 55;
     }
 
     @Override
-    public void caseTSetIdentifier(@SuppressWarnings("unused") TSetIdentifier node)
+    public void caseTElementIdentifier(@SuppressWarnings("unused") TElementIdentifier node)
     {
         this.index = 56;
     }
 
     @Override
-    public void caseTElementIdentifier(@SuppressWarnings("unused") TElementIdentifier node)
+    public void caseTString(@SuppressWarnings("unused") TString node)
     {
         this.index = 57;
     }
 
     @Override
-    public void caseTString(@SuppressWarnings("unused") TString node)
-    {
-        this.index = 58;
-    }
-
-    @Override
     public void caseEOF(@SuppressWarnings("unused") EOF node)
     {
-        this.index = 59;
+        this.index = 58;
     }
 }

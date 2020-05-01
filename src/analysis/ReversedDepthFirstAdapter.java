@@ -458,9 +458,13 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getColumn().apply(this);
         }
-        if(node.getTagNumber() != null)
+        if(node.getNumber() != null)
         {
-            node.getTagNumber().apply(this);
+            node.getNumber().apply(this);
+        }
+        if(node.getHashtag() != null)
+        {
+            node.getHashtag().apply(this);
         }
         outAAskInstruction(node);
     }
@@ -545,9 +549,13 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getColumn().apply(this);
         }
-        if(node.getTagNumber() != null)
+        if(node.getNumber() != null)
         {
-            node.getTagNumber().apply(this);
+            node.getNumber().apply(this);
+        }
+        if(node.getHashtag() != null)
+        {
+            node.getHashtag().apply(this);
         }
         outAProofInstruction(node);
     }

@@ -110,7 +110,7 @@ public interface Analysis extends Switch
     void caseTComma(TComma node);
     void caseTSemicolon(TSemicolon node);
     void caseTColumn(TColumn node);
-    void caseTDiesis(TDiesis node);
+    void caseTHashtag(THashtag node);
     void caseTImplicationSign(TImplicationSign node);
     void caseTEquivalenceSign(TEquivalenceSign node);
     void caseTLogicalAnd(TLogicalAnd node);
@@ -141,7 +141,6 @@ public interface Analysis extends Switch
     void caseTNotLessThan(TNotLessThan node);
     void caseTNeitherGreaterThanNorEqualTo(TNeitherGreaterThanNorEqualTo node);
     void caseTNeitherLessThanNorEqualTo(TNeitherLessThanNorEqualTo node);
-    void caseTTagNumber(TTagNumber node);
     void caseTNumber(TNumber node);
     void caseTSetIdentifier(TSetIdentifier node);
     void caseTElementIdentifier(TElementIdentifier node);
