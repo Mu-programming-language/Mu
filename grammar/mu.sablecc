@@ -47,7 +47,7 @@ Tokens
 	comma = ',';
 	semicolon = ';';
 	column = ':';
-	diesis = '#';
+	hashtag = '#';
 	implication_sign = '=>';
 	equivalence_sign = '<=>';
 
@@ -84,8 +84,6 @@ Tokens
 	not_less_than = '≮' | '!<';
 	neither_greater_than_nor_equal_to = '≱' | '!>=';
 	neither_less_than_nor_equal_to = '≰' | '!<=';
-
-	tag_number = '#' digit+ letter?;
 
 	number = '0' | (['1'..'9'] digit*);
 
@@ -127,13 +125,13 @@ Productions
 	additional_ask_instruction =
 		comma ask_instruction;
 	ask_instruction =
-		tag_number column show set_expression;
+		hashtag number column show set_expression;
 	proof_instruction_list =
 		proof_instruction additional_proof_instruction*;
 	additional_proof_instruction =
 		proof_instruction;
 	proof_instruction =
-		tag_number column demonstration done semicolon;
+		hashtag number column demonstration done semicolon;
 
 	demonstration =
 		proposition_list+;
