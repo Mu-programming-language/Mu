@@ -5,30 +5,26 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AQuestionInstruction extends PQuestionInstruction
+public final class AExpressionSimpleExpression extends PSimpleExpression
 {
-    private TTagNumber _tagNumber_;
-    private TColumn _column_;
-    private TShow _show_;
+    private PElementExpression _elementExpression_;
+    private TElementOf _elementOf_;
     private PSetExpression _setExpression_;
 
-    public AQuestionInstruction()
+    public AExpressionSimpleExpression()
     {
         // Constructor
     }
 
-    public AQuestionInstruction(
-        @SuppressWarnings("hiding") TTagNumber _tagNumber_,
-        @SuppressWarnings("hiding") TColumn _column_,
-        @SuppressWarnings("hiding") TShow _show_,
+    public AExpressionSimpleExpression(
+        @SuppressWarnings("hiding") PElementExpression _elementExpression_,
+        @SuppressWarnings("hiding") TElementOf _elementOf_,
         @SuppressWarnings("hiding") PSetExpression _setExpression_)
     {
         // Constructor
-        setTagNumber(_tagNumber_);
+        setElementExpression(_elementExpression_);
 
-        setColumn(_column_);
-
-        setShow(_show_);
+        setElementOf(_elementOf_);
 
         setSetExpression(_setExpression_);
 
@@ -37,29 +33,28 @@ public final class AQuestionInstruction extends PQuestionInstruction
     @Override
     public Object clone()
     {
-        return new AQuestionInstruction(
-            cloneNode(this._tagNumber_),
-            cloneNode(this._column_),
-            cloneNode(this._show_),
+        return new AExpressionSimpleExpression(
+            cloneNode(this._elementExpression_),
+            cloneNode(this._elementOf_),
             cloneNode(this._setExpression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAQuestionInstruction(this);
+        ((Analysis) sw).caseAExpressionSimpleExpression(this);
     }
 
-    public TTagNumber getTagNumber()
+    public PElementExpression getElementExpression()
     {
-        return this._tagNumber_;
+        return this._elementExpression_;
     }
 
-    public void setTagNumber(TTagNumber node)
+    public void setElementExpression(PElementExpression node)
     {
-        if(this._tagNumber_ != null)
+        if(this._elementExpression_ != null)
         {
-            this._tagNumber_.parent(null);
+            this._elementExpression_.parent(null);
         }
 
         if(node != null)
@@ -72,19 +67,19 @@ public final class AQuestionInstruction extends PQuestionInstruction
             node.parent(this);
         }
 
-        this._tagNumber_ = node;
+        this._elementExpression_ = node;
     }
 
-    public TColumn getColumn()
+    public TElementOf getElementOf()
     {
-        return this._column_;
+        return this._elementOf_;
     }
 
-    public void setColumn(TColumn node)
+    public void setElementOf(TElementOf node)
     {
-        if(this._column_ != null)
+        if(this._elementOf_ != null)
         {
-            this._column_.parent(null);
+            this._elementOf_.parent(null);
         }
 
         if(node != null)
@@ -97,32 +92,7 @@ public final class AQuestionInstruction extends PQuestionInstruction
             node.parent(this);
         }
 
-        this._column_ = node;
-    }
-
-    public TShow getShow()
-    {
-        return this._show_;
-    }
-
-    public void setShow(TShow node)
-    {
-        if(this._show_ != null)
-        {
-            this._show_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._show_ = node;
+        this._elementOf_ = node;
     }
 
     public PSetExpression getSetExpression()
@@ -154,9 +124,8 @@ public final class AQuestionInstruction extends PQuestionInstruction
     public String toString()
     {
         return ""
-            + toString(this._tagNumber_)
-            + toString(this._column_)
-            + toString(this._show_)
+            + toString(this._elementExpression_)
+            + toString(this._elementOf_)
             + toString(this._setExpression_);
     }
 
@@ -164,21 +133,15 @@ public final class AQuestionInstruction extends PQuestionInstruction
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._tagNumber_ == child)
+        if(this._elementExpression_ == child)
         {
-            this._tagNumber_ = null;
+            this._elementExpression_ = null;
             return;
         }
 
-        if(this._column_ == child)
+        if(this._elementOf_ == child)
         {
-            this._column_ = null;
-            return;
-        }
-
-        if(this._show_ == child)
-        {
-            this._show_ = null;
+            this._elementOf_ = null;
             return;
         }
 
@@ -195,21 +158,15 @@ public final class AQuestionInstruction extends PQuestionInstruction
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._tagNumber_ == oldChild)
+        if(this._elementExpression_ == oldChild)
         {
-            setTagNumber((TTagNumber) newChild);
+            setElementExpression((PElementExpression) newChild);
             return;
         }
 
-        if(this._column_ == oldChild)
+        if(this._elementOf_ == oldChild)
         {
-            setColumn((TColumn) newChild);
-            return;
-        }
-
-        if(this._show_ == oldChild)
-        {
-            setShow((TShow) newChild);
+            setElementOf((TElementOf) newChild);
             return;
         }
 

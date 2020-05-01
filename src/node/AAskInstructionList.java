@@ -6,26 +6,26 @@ import java.util.*;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AQuestionInstructionList extends PQuestionInstructionList
+public final class AAskInstructionList extends PAskInstructionList
 {
-    private PQuestionInstruction _questionInstruction_;
-    private final LinkedList<PAdditionalQuestionInstruction> _additionalQuestionInstruction_ = new LinkedList<PAdditionalQuestionInstruction>();
+    private PAskInstruction _askInstruction_;
+    private final LinkedList<PAdditionalAskInstruction> _additionalAskInstruction_ = new LinkedList<PAdditionalAskInstruction>();
     private TSemicolon _semicolon_;
 
-    public AQuestionInstructionList()
+    public AAskInstructionList()
     {
         // Constructor
     }
 
-    public AQuestionInstructionList(
-        @SuppressWarnings("hiding") PQuestionInstruction _questionInstruction_,
-        @SuppressWarnings("hiding") List<?> _additionalQuestionInstruction_,
+    public AAskInstructionList(
+        @SuppressWarnings("hiding") PAskInstruction _askInstruction_,
+        @SuppressWarnings("hiding") List<?> _additionalAskInstruction_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
-        setQuestionInstruction(_questionInstruction_);
+        setAskInstruction(_askInstruction_);
 
-        setAdditionalQuestionInstruction(_additionalQuestionInstruction_);
+        setAdditionalAskInstruction(_additionalAskInstruction_);
 
         setSemicolon(_semicolon_);
 
@@ -34,28 +34,28 @@ public final class AQuestionInstructionList extends PQuestionInstructionList
     @Override
     public Object clone()
     {
-        return new AQuestionInstructionList(
-            cloneNode(this._questionInstruction_),
-            cloneList(this._additionalQuestionInstruction_),
+        return new AAskInstructionList(
+            cloneNode(this._askInstruction_),
+            cloneList(this._additionalAskInstruction_),
             cloneNode(this._semicolon_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAQuestionInstructionList(this);
+        ((Analysis) sw).caseAAskInstructionList(this);
     }
 
-    public PQuestionInstruction getQuestionInstruction()
+    public PAskInstruction getAskInstruction()
     {
-        return this._questionInstruction_;
+        return this._askInstruction_;
     }
 
-    public void setQuestionInstruction(PQuestionInstruction node)
+    public void setAskInstruction(PAskInstruction node)
     {
-        if(this._questionInstruction_ != null)
+        if(this._askInstruction_ != null)
         {
-            this._questionInstruction_.parent(null);
+            this._askInstruction_.parent(null);
         }
 
         if(node != null)
@@ -68,32 +68,32 @@ public final class AQuestionInstructionList extends PQuestionInstructionList
             node.parent(this);
         }
 
-        this._questionInstruction_ = node;
+        this._askInstruction_ = node;
     }
 
-    public LinkedList<PAdditionalQuestionInstruction> getAdditionalQuestionInstruction()
+    public LinkedList<PAdditionalAskInstruction> getAdditionalAskInstruction()
     {
-        return this._additionalQuestionInstruction_;
+        return this._additionalAskInstruction_;
     }
 
-    public void setAdditionalQuestionInstruction(List<?> list)
+    public void setAdditionalAskInstruction(List<?> list)
     {
-        for(PAdditionalQuestionInstruction e : this._additionalQuestionInstruction_)
+        for(PAdditionalAskInstruction e : this._additionalAskInstruction_)
         {
             e.parent(null);
         }
-        this._additionalQuestionInstruction_.clear();
+        this._additionalAskInstruction_.clear();
 
         for(Object obj_e : list)
         {
-            PAdditionalQuestionInstruction e = (PAdditionalQuestionInstruction) obj_e;
+            PAdditionalAskInstruction e = (PAdditionalAskInstruction) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._additionalQuestionInstruction_.add(e);
+            this._additionalAskInstruction_.add(e);
         }
     }
 
@@ -126,8 +126,8 @@ public final class AQuestionInstructionList extends PQuestionInstructionList
     public String toString()
     {
         return ""
-            + toString(this._questionInstruction_)
-            + toString(this._additionalQuestionInstruction_)
+            + toString(this._askInstruction_)
+            + toString(this._additionalAskInstruction_)
             + toString(this._semicolon_);
     }
 
@@ -135,13 +135,13 @@ public final class AQuestionInstructionList extends PQuestionInstructionList
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._questionInstruction_ == child)
+        if(this._askInstruction_ == child)
         {
-            this._questionInstruction_ = null;
+            this._askInstruction_ = null;
             return;
         }
 
-        if(this._additionalQuestionInstruction_.remove(child))
+        if(this._additionalAskInstruction_.remove(child))
         {
             return;
         }
@@ -159,19 +159,19 @@ public final class AQuestionInstructionList extends PQuestionInstructionList
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._questionInstruction_ == oldChild)
+        if(this._askInstruction_ == oldChild)
         {
-            setQuestionInstruction((PQuestionInstruction) newChild);
+            setAskInstruction((PAskInstruction) newChild);
             return;
         }
 
-        for(ListIterator<PAdditionalQuestionInstruction> i = this._additionalQuestionInstruction_.listIterator(); i.hasNext();)
+        for(ListIterator<PAdditionalAskInstruction> i = this._additionalAskInstruction_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PAdditionalQuestionInstruction) newChild);
+                    i.set((PAdditionalAskInstruction) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

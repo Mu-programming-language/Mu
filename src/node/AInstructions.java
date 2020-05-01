@@ -8,7 +8,7 @@ import analysis.*;
 public final class AInstructions extends PInstructions
 {
     private PStatementBlock _statementBlock_;
-    private PQuestionBlock _questionBlock_;
+    private PAskBlock _askBlock_;
     private PProofBlock _proofBlock_;
 
     public AInstructions()
@@ -18,13 +18,13 @@ public final class AInstructions extends PInstructions
 
     public AInstructions(
         @SuppressWarnings("hiding") PStatementBlock _statementBlock_,
-        @SuppressWarnings("hiding") PQuestionBlock _questionBlock_,
+        @SuppressWarnings("hiding") PAskBlock _askBlock_,
         @SuppressWarnings("hiding") PProofBlock _proofBlock_)
     {
         // Constructor
         setStatementBlock(_statementBlock_);
 
-        setQuestionBlock(_questionBlock_);
+        setAskBlock(_askBlock_);
 
         setProofBlock(_proofBlock_);
 
@@ -35,7 +35,7 @@ public final class AInstructions extends PInstructions
     {
         return new AInstructions(
             cloneNode(this._statementBlock_),
-            cloneNode(this._questionBlock_),
+            cloneNode(this._askBlock_),
             cloneNode(this._proofBlock_));
     }
 
@@ -70,16 +70,16 @@ public final class AInstructions extends PInstructions
         this._statementBlock_ = node;
     }
 
-    public PQuestionBlock getQuestionBlock()
+    public PAskBlock getAskBlock()
     {
-        return this._questionBlock_;
+        return this._askBlock_;
     }
 
-    public void setQuestionBlock(PQuestionBlock node)
+    public void setAskBlock(PAskBlock node)
     {
-        if(this._questionBlock_ != null)
+        if(this._askBlock_ != null)
         {
-            this._questionBlock_.parent(null);
+            this._askBlock_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +92,7 @@ public final class AInstructions extends PInstructions
             node.parent(this);
         }
 
-        this._questionBlock_ = node;
+        this._askBlock_ = node;
     }
 
     public PProofBlock getProofBlock()
@@ -125,7 +125,7 @@ public final class AInstructions extends PInstructions
     {
         return ""
             + toString(this._statementBlock_)
-            + toString(this._questionBlock_)
+            + toString(this._askBlock_)
             + toString(this._proofBlock_);
     }
 
@@ -139,9 +139,9 @@ public final class AInstructions extends PInstructions
             return;
         }
 
-        if(this._questionBlock_ == child)
+        if(this._askBlock_ == child)
         {
-            this._questionBlock_ = null;
+            this._askBlock_ = null;
             return;
         }
 
@@ -164,9 +164,9 @@ public final class AInstructions extends PInstructions
             return;
         }
 
-        if(this._questionBlock_ == oldChild)
+        if(this._askBlock_ == oldChild)
         {
-            setQuestionBlock((PQuestionBlock) newChild);
+            setAskBlock((PAskBlock) newChild);
             return;
         }
 

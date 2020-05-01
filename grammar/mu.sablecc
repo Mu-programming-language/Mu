@@ -18,13 +18,14 @@ Helpers
 Tokens
 	category = 'analysis' | 'algebra' | 'set theory' | 'geometry' | 'statistic and probability';
 
-	proof = 'Proof';
-	statement = 'Statement';
-	question = 'Question';
+	proof = 'proof';
+	statement = 'statement';
+	ask = 'ask';
 
 	let = 'let';
 	done = 'done';
 	show = 'show';
+	thus = 'thus';
 
 	deprived_of = '\';
 
@@ -106,11 +107,11 @@ Productions
 	program =
 		category semicolon instructions;
 	instructions =
-		statement_block question_block proof_block;
+		statement_block ask_block proof_block;
 	statement_block =
 		statement column statement_instruction_list;
-	question_block =
-		question column question_instruction_list;
+	ask_block =
+		ask column ask_instruction_list;
 	proof_block =
 		proof column proof_instruction_list;
 	statement_instruction_list =
@@ -121,11 +122,11 @@ Productions
 		{declaration} let set_identifier |
 		{assignment} [new]:set_identifier equal_to left_brace element_identifier element_of set_identifier such_as element_expression right_brace |
 		{definition} let [new]:set_identifier equal_to left_brace element_identifier element_of set_identifier such_as element_expression right_brace;
-	question_instruction_list =
-		question_instruction additional_question_instruction* semicolon;
-	additional_question_instruction =
-		comma question_instruction;
-	question_instruction =
+	ask_instruction_list =
+		ask_instruction additional_ask_instruction* semicolon;
+	additional_ask_instruction =
+		comma ask_instruction;
+	ask_instruction =
 		tag_number column show set_expression;
 	proof_instruction_list =
 		proof_instruction additional_proof_instruction*;
@@ -137,24 +138,31 @@ Productions
 	demonstration =
 		proposition_list+;
 	proposition_list =
-		proposition additional_proposition* semicolon;
+		{proposition} proposition additional_proposition* semicolon |
+		{conclusion} thus expression semicolon;
 	additional_proposition =
 		{implication} implication_sign proposition |
 		{equivalence} equivalence_sign proposition;
 	proposition =
 		{expression} expression |
-		{for_all} for_all element_identifier element_of set_identifier comma expression |
-		{exist} exist element_identifier element_of set_identifier comma expression;
+		{for_all} for_all element_identifier element_of set_expression comma expression |
+		{exist} exist element_identifier element_of set_expression comma expression;
 
 	expression =
+		and_expression;
+	and_expression =
+		{logical_or} or_expression |
+		{logical_and} and_expression logical_and or_expression;
+	or_expression =
+		{expression} simple_expression |
+		{logical_or} or_expression logical_or simple_expression;
+	simple_expression =
 		{expression} element_expression element_of set_expression |
 		{set_expression} set_expression |
 		{element_expression} element_expression;
 
 	set_expression =
-		{comparison} set_comparison |
-		{logical_and} set_expression logical_and set_comparison |
-		{logical_or} set_expression logical_or set_comparison;
+		{comparison} set_comparison;
 	set_comparison =
 		{arithmetic} set_arithmetic |
 		{equal_to} set_comparison equal_to set_arithmetic |
@@ -166,7 +174,9 @@ Productions
 	set_arithmetic =
 		{factor} set_factor |
 		{plus} set_arithmetic plus set_factor |
-		{deprived_of} set_arithmetic deprived_of set_factor;
+		{deprived_of} set_arithmetic deprived_of set_factor |
+		{union} set_arithmetic union set_factor |
+		{intersection} set_arithmetic intersection set_factor;
 	set_factor =
 		{term} set_exponent |
 		{mult} set_factor multiplication set_exponent;
@@ -174,13 +184,12 @@ Productions
 		{term} set_term |
 		{exp} set_exponent power set_term;
 	set_term =
-		{set} set_identifier |
+		{identifier} set_identifier |
+		{element} left_brace element_term right_brace |
 		{expression} left_parenthesis set_expression right_parenthesis;
 
 	element_expression =
-		{comparison} element_comparison |
-		{logical_and} element_expression logical_and element_comparison |
-		{logical_or} element_expression logical_or element_comparison;
+		{comparison} element_comparison;
 	element_comparison =
 		{arithmetic} element_arithmetic |
 		{equal_to} element_comparison equal_to element_arithmetic |

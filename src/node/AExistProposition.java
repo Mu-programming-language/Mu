@@ -10,7 +10,7 @@ public final class AExistProposition extends PProposition
     private TExist _exist_;
     private TElementIdentifier _elementIdentifier_;
     private TElementOf _elementOf_;
-    private TSetIdentifier _setIdentifier_;
+    private PSetExpression _setExpression_;
     private TComma _comma_;
     private PExpression _expression_;
 
@@ -23,7 +23,7 @@ public final class AExistProposition extends PProposition
         @SuppressWarnings("hiding") TExist _exist_,
         @SuppressWarnings("hiding") TElementIdentifier _elementIdentifier_,
         @SuppressWarnings("hiding") TElementOf _elementOf_,
-        @SuppressWarnings("hiding") TSetIdentifier _setIdentifier_,
+        @SuppressWarnings("hiding") PSetExpression _setExpression_,
         @SuppressWarnings("hiding") TComma _comma_,
         @SuppressWarnings("hiding") PExpression _expression_)
     {
@@ -34,7 +34,7 @@ public final class AExistProposition extends PProposition
 
         setElementOf(_elementOf_);
 
-        setSetIdentifier(_setIdentifier_);
+        setSetExpression(_setExpression_);
 
         setComma(_comma_);
 
@@ -49,7 +49,7 @@ public final class AExistProposition extends PProposition
             cloneNode(this._exist_),
             cloneNode(this._elementIdentifier_),
             cloneNode(this._elementOf_),
-            cloneNode(this._setIdentifier_),
+            cloneNode(this._setExpression_),
             cloneNode(this._comma_),
             cloneNode(this._expression_));
     }
@@ -135,16 +135,16 @@ public final class AExistProposition extends PProposition
         this._elementOf_ = node;
     }
 
-    public TSetIdentifier getSetIdentifier()
+    public PSetExpression getSetExpression()
     {
-        return this._setIdentifier_;
+        return this._setExpression_;
     }
 
-    public void setSetIdentifier(TSetIdentifier node)
+    public void setSetExpression(PSetExpression node)
     {
-        if(this._setIdentifier_ != null)
+        if(this._setExpression_ != null)
         {
-            this._setIdentifier_.parent(null);
+            this._setExpression_.parent(null);
         }
 
         if(node != null)
@@ -157,7 +157,7 @@ public final class AExistProposition extends PProposition
             node.parent(this);
         }
 
-        this._setIdentifier_ = node;
+        this._setExpression_ = node;
     }
 
     public TComma getComma()
@@ -217,7 +217,7 @@ public final class AExistProposition extends PProposition
             + toString(this._exist_)
             + toString(this._elementIdentifier_)
             + toString(this._elementOf_)
-            + toString(this._setIdentifier_)
+            + toString(this._setExpression_)
             + toString(this._comma_)
             + toString(this._expression_);
     }
@@ -244,9 +244,9 @@ public final class AExistProposition extends PProposition
             return;
         }
 
-        if(this._setIdentifier_ == child)
+        if(this._setExpression_ == child)
         {
-            this._setIdentifier_ = null;
+            this._setExpression_ = null;
             return;
         }
 
@@ -287,9 +287,9 @@ public final class AExistProposition extends PProposition
             return;
         }
 
-        if(this._setIdentifier_ == oldChild)
+        if(this._setExpression_ == oldChild)
         {
-            setSetIdentifier((TSetIdentifier) newChild);
+            setSetExpression((PSetExpression) newChild);
             return;
         }
 

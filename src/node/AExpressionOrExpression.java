@@ -5,46 +5,46 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AElementExpressionExpression extends PExpression
+public final class AExpressionOrExpression extends POrExpression
 {
-    private PElementExpression _elementExpression_;
+    private PSimpleExpression _simpleExpression_;
 
-    public AElementExpressionExpression()
+    public AExpressionOrExpression()
     {
         // Constructor
     }
 
-    public AElementExpressionExpression(
-        @SuppressWarnings("hiding") PElementExpression _elementExpression_)
+    public AExpressionOrExpression(
+        @SuppressWarnings("hiding") PSimpleExpression _simpleExpression_)
     {
         // Constructor
-        setElementExpression(_elementExpression_);
+        setSimpleExpression(_simpleExpression_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AElementExpressionExpression(
-            cloneNode(this._elementExpression_));
+        return new AExpressionOrExpression(
+            cloneNode(this._simpleExpression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAElementExpressionExpression(this);
+        ((Analysis) sw).caseAExpressionOrExpression(this);
     }
 
-    public PElementExpression getElementExpression()
+    public PSimpleExpression getSimpleExpression()
     {
-        return this._elementExpression_;
+        return this._simpleExpression_;
     }
 
-    public void setElementExpression(PElementExpression node)
+    public void setSimpleExpression(PSimpleExpression node)
     {
-        if(this._elementExpression_ != null)
+        if(this._simpleExpression_ != null)
         {
-            this._elementExpression_.parent(null);
+            this._simpleExpression_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AElementExpressionExpression extends PExpression
             node.parent(this);
         }
 
-        this._elementExpression_ = node;
+        this._simpleExpression_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._elementExpression_);
+            + toString(this._simpleExpression_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._elementExpression_ == child)
+        if(this._simpleExpression_ == child)
         {
-            this._elementExpression_ = null;
+            this._simpleExpression_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AElementExpressionExpression extends PExpression
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._elementExpression_ == oldChild)
+        if(this._simpleExpression_ == oldChild)
         {
-            setElementExpression((PElementExpression) newChild);
+            setSimpleExpression((PSimpleExpression) newChild);
             return;
         }
 

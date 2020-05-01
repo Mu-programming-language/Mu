@@ -5,56 +5,56 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AQuestionBlock extends PQuestionBlock
+public final class AAskBlock extends PAskBlock
 {
-    private TQuestion _question_;
+    private TAsk _ask_;
     private TColumn _column_;
-    private PQuestionInstructionList _questionInstructionList_;
+    private PAskInstructionList _askInstructionList_;
 
-    public AQuestionBlock()
+    public AAskBlock()
     {
         // Constructor
     }
 
-    public AQuestionBlock(
-        @SuppressWarnings("hiding") TQuestion _question_,
+    public AAskBlock(
+        @SuppressWarnings("hiding") TAsk _ask_,
         @SuppressWarnings("hiding") TColumn _column_,
-        @SuppressWarnings("hiding") PQuestionInstructionList _questionInstructionList_)
+        @SuppressWarnings("hiding") PAskInstructionList _askInstructionList_)
     {
         // Constructor
-        setQuestion(_question_);
+        setAsk(_ask_);
 
         setColumn(_column_);
 
-        setQuestionInstructionList(_questionInstructionList_);
+        setAskInstructionList(_askInstructionList_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AQuestionBlock(
-            cloneNode(this._question_),
+        return new AAskBlock(
+            cloneNode(this._ask_),
             cloneNode(this._column_),
-            cloneNode(this._questionInstructionList_));
+            cloneNode(this._askInstructionList_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAQuestionBlock(this);
+        ((Analysis) sw).caseAAskBlock(this);
     }
 
-    public TQuestion getQuestion()
+    public TAsk getAsk()
     {
-        return this._question_;
+        return this._ask_;
     }
 
-    public void setQuestion(TQuestion node)
+    public void setAsk(TAsk node)
     {
-        if(this._question_ != null)
+        if(this._ask_ != null)
         {
-            this._question_.parent(null);
+            this._ask_.parent(null);
         }
 
         if(node != null)
@@ -67,7 +67,7 @@ public final class AQuestionBlock extends PQuestionBlock
             node.parent(this);
         }
 
-        this._question_ = node;
+        this._ask_ = node;
     }
 
     public TColumn getColumn()
@@ -95,16 +95,16 @@ public final class AQuestionBlock extends PQuestionBlock
         this._column_ = node;
     }
 
-    public PQuestionInstructionList getQuestionInstructionList()
+    public PAskInstructionList getAskInstructionList()
     {
-        return this._questionInstructionList_;
+        return this._askInstructionList_;
     }
 
-    public void setQuestionInstructionList(PQuestionInstructionList node)
+    public void setAskInstructionList(PAskInstructionList node)
     {
-        if(this._questionInstructionList_ != null)
+        if(this._askInstructionList_ != null)
         {
-            this._questionInstructionList_.parent(null);
+            this._askInstructionList_.parent(null);
         }
 
         if(node != null)
@@ -117,25 +117,25 @@ public final class AQuestionBlock extends PQuestionBlock
             node.parent(this);
         }
 
-        this._questionInstructionList_ = node;
+        this._askInstructionList_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._question_)
+            + toString(this._ask_)
             + toString(this._column_)
-            + toString(this._questionInstructionList_);
+            + toString(this._askInstructionList_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._question_ == child)
+        if(this._ask_ == child)
         {
-            this._question_ = null;
+            this._ask_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AQuestionBlock extends PQuestionBlock
             return;
         }
 
-        if(this._questionInstructionList_ == child)
+        if(this._askInstructionList_ == child)
         {
-            this._questionInstructionList_ = null;
+            this._askInstructionList_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AQuestionBlock extends PQuestionBlock
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._question_ == oldChild)
+        if(this._ask_ == oldChild)
         {
-            setQuestion((TQuestion) newChild);
+            setAsk((TAsk) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AQuestionBlock extends PQuestionBlock
             return;
         }
 
-        if(this._questionInstructionList_ == oldChild)
+        if(this._askInstructionList_ == oldChild)
         {
-            setQuestionInstructionList((PQuestionInstructionList) newChild);
+            setAskInstructionList((PAskInstructionList) newChild);
             return;
         }
 

@@ -2,7 +2,7 @@
 
 package node;
 
-public abstract class PQuestionBlock extends Node
+public abstract class PSimpleExpression extends Node
 {
     // Empty body
 }

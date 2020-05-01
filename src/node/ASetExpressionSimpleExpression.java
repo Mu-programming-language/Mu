@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASetExpressionExpression extends PExpression
+public final class ASetExpressionSimpleExpression extends PSimpleExpression
 {
     private PSetExpression _setExpression_;
 
-    public ASetExpressionExpression()
+    public ASetExpressionSimpleExpression()
     {
         // Constructor
     }
 
-    public ASetExpressionExpression(
+    public ASetExpressionSimpleExpression(
         @SuppressWarnings("hiding") PSetExpression _setExpression_)
     {
         // Constructor
@@ -25,14 +25,14 @@ public final class ASetExpressionExpression extends PExpression
     @Override
     public Object clone()
     {
-        return new ASetExpressionExpression(
+        return new ASetExpressionSimpleExpression(
             cloneNode(this._setExpression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASetExpressionExpression(this);
+        ((Analysis) sw).caseASetExpressionSimpleExpression(this);
     }
 
     public PSetExpression getSetExpression()

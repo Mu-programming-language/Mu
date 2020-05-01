@@ -6,18 +6,18 @@ import java.util.*;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class APropositionList extends PPropositionList
+public final class APropositionPropositionList extends PPropositionList
 {
     private PProposition _proposition_;
     private final LinkedList<PAdditionalProposition> _additionalProposition_ = new LinkedList<PAdditionalProposition>();
     private TSemicolon _semicolon_;
 
-    public APropositionList()
+    public APropositionPropositionList()
     {
         // Constructor
     }
 
-    public APropositionList(
+    public APropositionPropositionList(
         @SuppressWarnings("hiding") PProposition _proposition_,
         @SuppressWarnings("hiding") List<?> _additionalProposition_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
@@ -34,7 +34,7 @@ public final class APropositionList extends PPropositionList
     @Override
     public Object clone()
     {
-        return new APropositionList(
+        return new APropositionPropositionList(
             cloneNode(this._proposition_),
             cloneList(this._additionalProposition_),
             cloneNode(this._semicolon_));
@@ -43,7 +43,7 @@ public final class APropositionList extends PPropositionList
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAPropositionList(this);
+        ((Analysis) sw).caseAPropositionPropositionList(this);
     }
 
     public PProposition getProposition()

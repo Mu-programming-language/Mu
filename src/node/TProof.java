@@ -9,12 +9,12 @@ public final class TProof extends Token
 {
     public TProof()
     {
-        super.setText("Proof");
+        super.setText("proof");
     }
 
     public TProof(int line, int pos)
     {
-        super.setText("Proof");
+        super.setText("proof");
         setLine(line);
         setPos(pos);
     }

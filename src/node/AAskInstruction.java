@@ -5,26 +5,30 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpressionExpression extends PExpression
+public final class AAskInstruction extends PAskInstruction
 {
-    private PElementExpression _elementExpression_;
-    private TElementOf _elementOf_;
+    private TTagNumber _tagNumber_;
+    private TColumn _column_;
+    private TShow _show_;
     private PSetExpression _setExpression_;
 
-    public AExpressionExpression()
+    public AAskInstruction()
     {
         // Constructor
     }
 
-    public AExpressionExpression(
-        @SuppressWarnings("hiding") PElementExpression _elementExpression_,
-        @SuppressWarnings("hiding") TElementOf _elementOf_,
+    public AAskInstruction(
+        @SuppressWarnings("hiding") TTagNumber _tagNumber_,
+        @SuppressWarnings("hiding") TColumn _column_,
+        @SuppressWarnings("hiding") TShow _show_,
         @SuppressWarnings("hiding") PSetExpression _setExpression_)
     {
         // Constructor
-        setElementExpression(_elementExpression_);
+        setTagNumber(_tagNumber_);
 
-        setElementOf(_elementOf_);
+        setColumn(_column_);
+
+        setShow(_show_);
 
         setSetExpression(_setExpression_);
 
@@ -33,28 +37,29 @@ public final class AExpressionExpression extends PExpression
     @Override
     public Object clone()
     {
-        return new AExpressionExpression(
-            cloneNode(this._elementExpression_),
-            cloneNode(this._elementOf_),
+        return new AAskInstruction(
+            cloneNode(this._tagNumber_),
+            cloneNode(this._column_),
+            cloneNode(this._show_),
             cloneNode(this._setExpression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpressionExpression(this);
+        ((Analysis) sw).caseAAskInstruction(this);
     }
 
-    public PElementExpression getElementExpression()
+    public TTagNumber getTagNumber()
     {
-        return this._elementExpression_;
+        return this._tagNumber_;
     }
 
-    public void setElementExpression(PElementExpression node)
+    public void setTagNumber(TTagNumber node)
     {
-        if(this._elementExpression_ != null)
+        if(this._tagNumber_ != null)
         {
-            this._elementExpression_.parent(null);
+            this._tagNumber_.parent(null);
         }
 
         if(node != null)
@@ -67,19 +72,19 @@ public final class AExpressionExpression extends PExpression
             node.parent(this);
         }
 
-        this._elementExpression_ = node;
+        this._tagNumber_ = node;
     }
 
-    public TElementOf getElementOf()
+    public TColumn getColumn()
     {
-        return this._elementOf_;
+        return this._column_;
     }
 
-    public void setElementOf(TElementOf node)
+    public void setColumn(TColumn node)
     {
-        if(this._elementOf_ != null)
+        if(this._column_ != null)
         {
-            this._elementOf_.parent(null);
+            this._column_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +97,32 @@ public final class AExpressionExpression extends PExpression
             node.parent(this);
         }
 
-        this._elementOf_ = node;
+        this._column_ = node;
+    }
+
+    public TShow getShow()
+    {
+        return this._show_;
+    }
+
+    public void setShow(TShow node)
+    {
+        if(this._show_ != null)
+        {
+            this._show_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._show_ = node;
     }
 
     public PSetExpression getSetExpression()
@@ -124,8 +154,9 @@ public final class AExpressionExpression extends PExpression
     public String toString()
     {
         return ""
-            + toString(this._elementExpression_)
-            + toString(this._elementOf_)
+            + toString(this._tagNumber_)
+            + toString(this._column_)
+            + toString(this._show_)
             + toString(this._setExpression_);
     }
 
@@ -133,15 +164,21 @@ public final class AExpressionExpression extends PExpression
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._elementExpression_ == child)
+        if(this._tagNumber_ == child)
         {
-            this._elementExpression_ = null;
+            this._tagNumber_ = null;
             return;
         }
 
-        if(this._elementOf_ == child)
+        if(this._column_ == child)
         {
-            this._elementOf_ = null;
+            this._column_ = null;
+            return;
+        }
+
+        if(this._show_ == child)
+        {
+            this._show_ = null;
             return;
         }
 
@@ -158,15 +195,21 @@ public final class AExpressionExpression extends PExpression
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._elementExpression_ == oldChild)
+        if(this._tagNumber_ == oldChild)
         {
-            setElementExpression((PElementExpression) newChild);
+            setTagNumber((TTagNumber) newChild);
             return;
         }
 
-        if(this._elementOf_ == oldChild)
+        if(this._column_ == oldChild)
         {
-            setElementOf((TElementOf) newChild);
+            setColumn((TColumn) newChild);
+            return;
+        }
+
+        if(this._show_ == oldChild)
+        {
+            setShow((TShow) newChild);
             return;
         }
 

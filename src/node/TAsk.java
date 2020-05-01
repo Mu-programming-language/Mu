@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TStatement extends Token
+public final class TAsk extends Token
 {
-    public TStatement()
+    public TAsk()
     {
-        super.setText("statement");
+        super.setText("ask");
     }
 
-    public TStatement(int line, int pos)
+    public TAsk(int line, int pos)
     {
-        super.setText("statement");
+        super.setText("ask");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TStatement extends Token
     @Override
     public Object clone()
     {
-      return new TStatement(getLine(), getPos());
+      return new TAsk(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTStatement(this);
+        ((Analysis) sw).caseTAsk(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TStatement text.");
+        throw new RuntimeException("Cannot change TAsk text.");
     }
 }

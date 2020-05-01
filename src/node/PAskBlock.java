@@ -2,7 +2,7 @@
 
 package node;
 
-public abstract class PAdditionalQuestionInstruction extends Node
+public abstract class PAskBlock extends Node
 {
     // Empty body
 }

@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TQuestion extends Token
+public final class TThus extends Token
 {
-    public TQuestion()
+    public TThus()
     {
-        super.setText("Question");
+        super.setText("thus");
     }
 
-    public TQuestion(int line, int pos)
+    public TThus(int line, int pos)
     {
-        super.setText("Question");
+        super.setText("thus");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TQuestion extends Token
     @Override
     public Object clone()
     {
-      return new TQuestion(getLine(), getPos());
+      return new TThus(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTQuestion(this);
+        ((Analysis) sw).caseTThus(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TQuestion text.");
+        throw new RuntimeException("Cannot change TThus text.");
     }
 }

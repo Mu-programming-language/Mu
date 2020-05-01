@@ -93,7 +93,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAQuestionBlock(AQuestionBlock node)
+    public void caseAAskBlock(AAskBlock node)
     {
         defaultCase(node);
     }
@@ -135,19 +135,19 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAQuestionInstructionList(AQuestionInstructionList node)
+    public void caseAAskInstructionList(AAskInstructionList node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    public void caseAAdditionalAskInstruction(AAdditionalAskInstruction node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAQuestionInstruction(AQuestionInstruction node)
+    public void caseAAskInstruction(AAskInstruction node)
     {
         defaultCase(node);
     }
@@ -177,7 +177,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAPropositionList(APropositionList node)
+    public void caseAPropositionPropositionList(APropositionPropositionList node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAConclusionPropositionList(AConclusionPropositionList node)
     {
         defaultCase(node);
     }
@@ -213,37 +219,55 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAExpressionExpression(AExpressionExpression node)
+    public void caseAExpression(AExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseASetExpressionExpression(ASetExpressionExpression node)
+    public void caseALogicalOrAndExpression(ALogicalOrAndExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAElementExpressionExpression(AElementExpressionExpression node)
+    public void caseALogicalAndAndExpression(ALogicalAndAndExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpressionOrExpression(AExpressionOrExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALogicalOrOrExpression(ALogicalOrOrExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpressionSimpleExpression(AExpressionSimpleExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASetExpressionSimpleExpression(ASetExpressionSimpleExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElementExpressionSimpleExpression(AElementExpressionSimpleExpression node)
     {
         defaultCase(node);
     }
 
     @Override
     public void caseAComparisonSetExpression(AComparisonSetExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALogicalAndSetExpression(ALogicalAndSetExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALogicalOrSetExpression(ALogicalOrSetExpression node)
     {
         defaultCase(node);
     }
@@ -309,6 +333,18 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAUnionSetArithmetic(AUnionSetArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIntersectionSetArithmetic(AIntersectionSetArithmetic node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseATermSetFactor(ATermSetFactor node)
     {
         defaultCase(node);
@@ -333,7 +369,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseASetSetTerm(ASetSetTerm node)
+    public void caseAIdentifierSetTerm(AIdentifierSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElementSetTerm(AElementSetTerm node)
     {
         defaultCase(node);
     }
@@ -346,18 +388,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAComparisonElementExpression(AComparisonElementExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALogicalAndElementExpression(ALogicalAndElementExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALogicalOrElementExpression(ALogicalOrElementExpression node)
     {
         defaultCase(node);
     }
@@ -507,7 +537,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTQuestion(TQuestion node)
+    public void caseTAsk(TAsk node)
     {
         defaultCase(node);
     }
@@ -526,6 +556,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTShow(TShow node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTThus(TThus node)
     {
         defaultCase(node);
     }

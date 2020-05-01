@@ -5,39 +5,39 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AAdditionalQuestionInstruction extends PAdditionalQuestionInstruction
+public final class AAdditionalAskInstruction extends PAdditionalAskInstruction
 {
     private TComma _comma_;
-    private PQuestionInstruction _questionInstruction_;
+    private PAskInstruction _askInstruction_;
 
-    public AAdditionalQuestionInstruction()
+    public AAdditionalAskInstruction()
     {
         // Constructor
     }
 
-    public AAdditionalQuestionInstruction(
+    public AAdditionalAskInstruction(
         @SuppressWarnings("hiding") TComma _comma_,
-        @SuppressWarnings("hiding") PQuestionInstruction _questionInstruction_)
+        @SuppressWarnings("hiding") PAskInstruction _askInstruction_)
     {
         // Constructor
         setComma(_comma_);
 
-        setQuestionInstruction(_questionInstruction_);
+        setAskInstruction(_askInstruction_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AAdditionalQuestionInstruction(
+        return new AAdditionalAskInstruction(
             cloneNode(this._comma_),
-            cloneNode(this._questionInstruction_));
+            cloneNode(this._askInstruction_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAAdditionalQuestionInstruction(this);
+        ((Analysis) sw).caseAAdditionalAskInstruction(this);
     }
 
     public TComma getComma()
@@ -65,16 +65,16 @@ public final class AAdditionalQuestionInstruction extends PAdditionalQuestionIns
         this._comma_ = node;
     }
 
-    public PQuestionInstruction getQuestionInstruction()
+    public PAskInstruction getAskInstruction()
     {
-        return this._questionInstruction_;
+        return this._askInstruction_;
     }
 
-    public void setQuestionInstruction(PQuestionInstruction node)
+    public void setAskInstruction(PAskInstruction node)
     {
-        if(this._questionInstruction_ != null)
+        if(this._askInstruction_ != null)
         {
-            this._questionInstruction_.parent(null);
+            this._askInstruction_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class AAdditionalQuestionInstruction extends PAdditionalQuestionIns
             node.parent(this);
         }
 
-        this._questionInstruction_ = node;
+        this._askInstruction_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class AAdditionalQuestionInstruction extends PAdditionalQuestionIns
     {
         return ""
             + toString(this._comma_)
-            + toString(this._questionInstruction_);
+            + toString(this._askInstruction_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class AAdditionalQuestionInstruction extends PAdditionalQuestionIns
             return;
         }
 
-        if(this._questionInstruction_ == child)
+        if(this._askInstruction_ == child)
         {
-            this._questionInstruction_ = null;
+            this._askInstruction_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class AAdditionalQuestionInstruction extends PAdditionalQuestionIns
             return;
         }
 
-        if(this._questionInstruction_ == oldChild)
+        if(this._askInstruction_ == oldChild)
         {
-            setQuestionInstruction((PQuestionInstruction) newChild);
+            setAskInstruction((PAskInstruction) newChild);
             return;
         }
 

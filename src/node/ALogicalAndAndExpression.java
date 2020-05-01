@@ -5,56 +5,56 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ALogicalAndSetExpression extends PSetExpression
+public final class ALogicalAndAndExpression extends PAndExpression
 {
-    private PSetExpression _setExpression_;
+    private PAndExpression _andExpression_;
     private TLogicalAnd _logicalAnd_;
-    private PSetComparison _setComparison_;
+    private POrExpression _orExpression_;
 
-    public ALogicalAndSetExpression()
+    public ALogicalAndAndExpression()
     {
         // Constructor
     }
 
-    public ALogicalAndSetExpression(
-        @SuppressWarnings("hiding") PSetExpression _setExpression_,
+    public ALogicalAndAndExpression(
+        @SuppressWarnings("hiding") PAndExpression _andExpression_,
         @SuppressWarnings("hiding") TLogicalAnd _logicalAnd_,
-        @SuppressWarnings("hiding") PSetComparison _setComparison_)
+        @SuppressWarnings("hiding") POrExpression _orExpression_)
     {
         // Constructor
-        setSetExpression(_setExpression_);
+        setAndExpression(_andExpression_);
 
         setLogicalAnd(_logicalAnd_);
 
-        setSetComparison(_setComparison_);
+        setOrExpression(_orExpression_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ALogicalAndSetExpression(
-            cloneNode(this._setExpression_),
+        return new ALogicalAndAndExpression(
+            cloneNode(this._andExpression_),
             cloneNode(this._logicalAnd_),
-            cloneNode(this._setComparison_));
+            cloneNode(this._orExpression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseALogicalAndSetExpression(this);
+        ((Analysis) sw).caseALogicalAndAndExpression(this);
     }
 
-    public PSetExpression getSetExpression()
+    public PAndExpression getAndExpression()
     {
-        return this._setExpression_;
+        return this._andExpression_;
     }
 
-    public void setSetExpression(PSetExpression node)
+    public void setAndExpression(PAndExpression node)
     {
-        if(this._setExpression_ != null)
+        if(this._andExpression_ != null)
         {
-            this._setExpression_.parent(null);
+            this._andExpression_.parent(null);
         }
 
         if(node != null)
@@ -67,7 +67,7 @@ public final class ALogicalAndSetExpression extends PSetExpression
             node.parent(this);
         }
 
-        this._setExpression_ = node;
+        this._andExpression_ = node;
     }
 
     public TLogicalAnd getLogicalAnd()
@@ -95,16 +95,16 @@ public final class ALogicalAndSetExpression extends PSetExpression
         this._logicalAnd_ = node;
     }
 
-    public PSetComparison getSetComparison()
+    public POrExpression getOrExpression()
     {
-        return this._setComparison_;
+        return this._orExpression_;
     }
 
-    public void setSetComparison(PSetComparison node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._setComparison_ != null)
+        if(this._orExpression_ != null)
         {
-            this._setComparison_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -117,25 +117,25 @@ public final class ALogicalAndSetExpression extends PSetExpression
             node.parent(this);
         }
 
-        this._setComparison_ = node;
+        this._orExpression_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._setExpression_)
+            + toString(this._andExpression_)
             + toString(this._logicalAnd_)
-            + toString(this._setComparison_);
+            + toString(this._orExpression_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._setExpression_ == child)
+        if(this._andExpression_ == child)
         {
-            this._setExpression_ = null;
+            this._andExpression_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class ALogicalAndSetExpression extends PSetExpression
             return;
         }
 
-        if(this._setComparison_ == child)
+        if(this._orExpression_ == child)
         {
-            this._setComparison_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class ALogicalAndSetExpression extends PSetExpression
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._setExpression_ == oldChild)
+        if(this._andExpression_ == oldChild)
         {
-            setSetExpression((PSetExpression) newChild);
+            setAndExpression((PAndExpression) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class ALogicalAndSetExpression extends PSetExpression
             return;
         }
 
-        if(this._setComparison_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setSetComparison((PSetComparison) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 

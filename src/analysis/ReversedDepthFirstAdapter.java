@@ -83,9 +83,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getProofBlock().apply(this);
         }
-        if(node.getQuestionBlock() != null)
+        if(node.getAskBlock() != null)
         {
-            node.getQuestionBlock().apply(this);
+            node.getAskBlock().apply(this);
         }
         if(node.getStatementBlock() != null)
         {
@@ -123,33 +123,33 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAStatementBlock(node);
     }
 
-    public void inAQuestionBlock(AQuestionBlock node)
+    public void inAAskBlock(AAskBlock node)
     {
         defaultIn(node);
     }
 
-    public void outAQuestionBlock(AQuestionBlock node)
+    public void outAAskBlock(AAskBlock node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAQuestionBlock(AQuestionBlock node)
+    public void caseAAskBlock(AAskBlock node)
     {
-        inAQuestionBlock(node);
-        if(node.getQuestionInstructionList() != null)
+        inAAskBlock(node);
+        if(node.getAskInstructionList() != null)
         {
-            node.getQuestionInstructionList().apply(this);
+            node.getAskInstructionList().apply(this);
         }
         if(node.getColumn() != null)
         {
             node.getColumn().apply(this);
         }
-        if(node.getQuestion() != null)
+        if(node.getAsk() != null)
         {
-            node.getQuestion().apply(this);
+            node.getAsk().apply(this);
         }
-        outAQuestionBlock(node);
+        outAAskBlock(node);
     }
 
     public void inAProofBlock(AProofBlock node)
@@ -374,78 +374,78 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outADefinitionStatementInstruction(node);
     }
 
-    public void inAQuestionInstructionList(AQuestionInstructionList node)
+    public void inAAskInstructionList(AAskInstructionList node)
     {
         defaultIn(node);
     }
 
-    public void outAQuestionInstructionList(AQuestionInstructionList node)
+    public void outAAskInstructionList(AAskInstructionList node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAQuestionInstructionList(AQuestionInstructionList node)
+    public void caseAAskInstructionList(AAskInstructionList node)
     {
-        inAQuestionInstructionList(node);
+        inAAskInstructionList(node);
         if(node.getSemicolon() != null)
         {
             node.getSemicolon().apply(this);
         }
         {
-            List<PAdditionalQuestionInstruction> copy = new ArrayList<PAdditionalQuestionInstruction>(node.getAdditionalQuestionInstruction());
+            List<PAdditionalAskInstruction> copy = new ArrayList<PAdditionalAskInstruction>(node.getAdditionalAskInstruction());
             Collections.reverse(copy);
-            for(PAdditionalQuestionInstruction e : copy)
+            for(PAdditionalAskInstruction e : copy)
             {
                 e.apply(this);
             }
         }
-        if(node.getQuestionInstruction() != null)
+        if(node.getAskInstruction() != null)
         {
-            node.getQuestionInstruction().apply(this);
+            node.getAskInstruction().apply(this);
         }
-        outAQuestionInstructionList(node);
+        outAAskInstructionList(node);
     }
 
-    public void inAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    public void inAAdditionalAskInstruction(AAdditionalAskInstruction node)
     {
         defaultIn(node);
     }
 
-    public void outAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    public void outAAdditionalAskInstruction(AAdditionalAskInstruction node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAAdditionalQuestionInstruction(AAdditionalQuestionInstruction node)
+    public void caseAAdditionalAskInstruction(AAdditionalAskInstruction node)
     {
-        inAAdditionalQuestionInstruction(node);
-        if(node.getQuestionInstruction() != null)
+        inAAdditionalAskInstruction(node);
+        if(node.getAskInstruction() != null)
         {
-            node.getQuestionInstruction().apply(this);
+            node.getAskInstruction().apply(this);
         }
         if(node.getComma() != null)
         {
             node.getComma().apply(this);
         }
-        outAAdditionalQuestionInstruction(node);
+        outAAdditionalAskInstruction(node);
     }
 
-    public void inAQuestionInstruction(AQuestionInstruction node)
+    public void inAAskInstruction(AAskInstruction node)
     {
         defaultIn(node);
     }
 
-    public void outAQuestionInstruction(AQuestionInstruction node)
+    public void outAAskInstruction(AAskInstruction node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAQuestionInstruction(AQuestionInstruction node)
+    public void caseAAskInstruction(AAskInstruction node)
     {
-        inAQuestionInstruction(node);
+        inAAskInstruction(node);
         if(node.getSetExpression() != null)
         {
             node.getSetExpression().apply(this);
@@ -462,7 +462,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getTagNumber().apply(this);
         }
-        outAQuestionInstruction(node);
+        outAAskInstruction(node);
     }
 
     public void inAProofInstructionList(AProofInstructionList node)
@@ -577,20 +577,20 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outADemonstration(node);
     }
 
-    public void inAPropositionList(APropositionList node)
+    public void inAPropositionPropositionList(APropositionPropositionList node)
     {
         defaultIn(node);
     }
 
-    public void outAPropositionList(APropositionList node)
+    public void outAPropositionPropositionList(APropositionPropositionList node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAPropositionList(APropositionList node)
+    public void caseAPropositionPropositionList(APropositionPropositionList node)
     {
-        inAPropositionList(node);
+        inAPropositionPropositionList(node);
         if(node.getSemicolon() != null)
         {
             node.getSemicolon().apply(this);
@@ -607,7 +607,36 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getProposition().apply(this);
         }
-        outAPropositionList(node);
+        outAPropositionPropositionList(node);
+    }
+
+    public void inAConclusionPropositionList(AConclusionPropositionList node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAConclusionPropositionList(AConclusionPropositionList node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAConclusionPropositionList(AConclusionPropositionList node)
+    {
+        inAConclusionPropositionList(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getExpression() != null)
+        {
+            node.getExpression().apply(this);
+        }
+        if(node.getThus() != null)
+        {
+            node.getThus().apply(this);
+        }
+        outAConclusionPropositionList(node);
     }
 
     public void inAImplicationAdditionalProposition(AImplicationAdditionalProposition node)
@@ -703,9 +732,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getComma().apply(this);
         }
-        if(node.getSetIdentifier() != null)
+        if(node.getSetExpression() != null)
         {
-            node.getSetIdentifier().apply(this);
+            node.getSetExpression().apply(this);
         }
         if(node.getElementOf() != null)
         {
@@ -744,9 +773,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getComma().apply(this);
         }
-        if(node.getSetIdentifier() != null)
+        if(node.getSetExpression() != null)
         {
-            node.getSetIdentifier().apply(this);
+            node.getSetExpression().apply(this);
         }
         if(node.getElementOf() != null)
         {
@@ -763,20 +792,141 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAExistProposition(node);
     }
 
-    public void inAExpressionExpression(AExpressionExpression node)
+    public void inAExpression(AExpression node)
     {
         defaultIn(node);
     }
 
-    public void outAExpressionExpression(AExpressionExpression node)
+    public void outAExpression(AExpression node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAExpressionExpression(AExpressionExpression node)
+    public void caseAExpression(AExpression node)
     {
-        inAExpressionExpression(node);
+        inAExpression(node);
+        if(node.getAndExpression() != null)
+        {
+            node.getAndExpression().apply(this);
+        }
+        outAExpression(node);
+    }
+
+    public void inALogicalOrAndExpression(ALogicalOrAndExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALogicalOrAndExpression(ALogicalOrAndExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALogicalOrAndExpression(ALogicalOrAndExpression node)
+    {
+        inALogicalOrAndExpression(node);
+        if(node.getOrExpression() != null)
+        {
+            node.getOrExpression().apply(this);
+        }
+        outALogicalOrAndExpression(node);
+    }
+
+    public void inALogicalAndAndExpression(ALogicalAndAndExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALogicalAndAndExpression(ALogicalAndAndExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALogicalAndAndExpression(ALogicalAndAndExpression node)
+    {
+        inALogicalAndAndExpression(node);
+        if(node.getOrExpression() != null)
+        {
+            node.getOrExpression().apply(this);
+        }
+        if(node.getLogicalAnd() != null)
+        {
+            node.getLogicalAnd().apply(this);
+        }
+        if(node.getAndExpression() != null)
+        {
+            node.getAndExpression().apply(this);
+        }
+        outALogicalAndAndExpression(node);
+    }
+
+    public void inAExpressionOrExpression(AExpressionOrExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpressionOrExpression(AExpressionOrExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpressionOrExpression(AExpressionOrExpression node)
+    {
+        inAExpressionOrExpression(node);
+        if(node.getSimpleExpression() != null)
+        {
+            node.getSimpleExpression().apply(this);
+        }
+        outAExpressionOrExpression(node);
+    }
+
+    public void inALogicalOrOrExpression(ALogicalOrOrExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outALogicalOrOrExpression(ALogicalOrOrExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseALogicalOrOrExpression(ALogicalOrOrExpression node)
+    {
+        inALogicalOrOrExpression(node);
+        if(node.getSimpleExpression() != null)
+        {
+            node.getSimpleExpression().apply(this);
+        }
+        if(node.getLogicalOr() != null)
+        {
+            node.getLogicalOr().apply(this);
+        }
+        if(node.getOrExpression() != null)
+        {
+            node.getOrExpression().apply(this);
+        }
+        outALogicalOrOrExpression(node);
+    }
+
+    public void inAExpressionSimpleExpression(AExpressionSimpleExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpressionSimpleExpression(AExpressionSimpleExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpressionSimpleExpression(AExpressionSimpleExpression node)
+    {
+        inAExpressionSimpleExpression(node);
         if(node.getSetExpression() != null)
         {
             node.getSetExpression().apply(this);
@@ -789,49 +939,49 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getElementExpression().apply(this);
         }
-        outAExpressionExpression(node);
+        outAExpressionSimpleExpression(node);
     }
 
-    public void inASetExpressionExpression(ASetExpressionExpression node)
+    public void inASetExpressionSimpleExpression(ASetExpressionSimpleExpression node)
     {
         defaultIn(node);
     }
 
-    public void outASetExpressionExpression(ASetExpressionExpression node)
+    public void outASetExpressionSimpleExpression(ASetExpressionSimpleExpression node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASetExpressionExpression(ASetExpressionExpression node)
+    public void caseASetExpressionSimpleExpression(ASetExpressionSimpleExpression node)
     {
-        inASetExpressionExpression(node);
+        inASetExpressionSimpleExpression(node);
         if(node.getSetExpression() != null)
         {
             node.getSetExpression().apply(this);
         }
-        outASetExpressionExpression(node);
+        outASetExpressionSimpleExpression(node);
     }
 
-    public void inAElementExpressionExpression(AElementExpressionExpression node)
+    public void inAElementExpressionSimpleExpression(AElementExpressionSimpleExpression node)
     {
         defaultIn(node);
     }
 
-    public void outAElementExpressionExpression(AElementExpressionExpression node)
+    public void outAElementExpressionSimpleExpression(AElementExpressionSimpleExpression node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAElementExpressionExpression(AElementExpressionExpression node)
+    public void caseAElementExpressionSimpleExpression(AElementExpressionSimpleExpression node)
     {
-        inAElementExpressionExpression(node);
+        inAElementExpressionSimpleExpression(node);
         if(node.getElementExpression() != null)
         {
             node.getElementExpression().apply(this);
         }
-        outAElementExpressionExpression(node);
+        outAElementExpressionSimpleExpression(node);
     }
 
     public void inAComparisonSetExpression(AComparisonSetExpression node)
@@ -853,64 +1003,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getSetComparison().apply(this);
         }
         outAComparisonSetExpression(node);
-    }
-
-    public void inALogicalAndSetExpression(ALogicalAndSetExpression node)
-    {
-        defaultIn(node);
-    }
-
-    public void outALogicalAndSetExpression(ALogicalAndSetExpression node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseALogicalAndSetExpression(ALogicalAndSetExpression node)
-    {
-        inALogicalAndSetExpression(node);
-        if(node.getSetComparison() != null)
-        {
-            node.getSetComparison().apply(this);
-        }
-        if(node.getLogicalAnd() != null)
-        {
-            node.getLogicalAnd().apply(this);
-        }
-        if(node.getSetExpression() != null)
-        {
-            node.getSetExpression().apply(this);
-        }
-        outALogicalAndSetExpression(node);
-    }
-
-    public void inALogicalOrSetExpression(ALogicalOrSetExpression node)
-    {
-        defaultIn(node);
-    }
-
-    public void outALogicalOrSetExpression(ALogicalOrSetExpression node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseALogicalOrSetExpression(ALogicalOrSetExpression node)
-    {
-        inALogicalOrSetExpression(node);
-        if(node.getSetComparison() != null)
-        {
-            node.getSetComparison().apply(this);
-        }
-        if(node.getLogicalOr() != null)
-        {
-            node.getLogicalOr().apply(this);
-        }
-        if(node.getSetExpression() != null)
-        {
-            node.getSetExpression().apply(this);
-        }
-        outALogicalOrSetExpression(node);
     }
 
     public void inAArithmeticSetComparison(AArithmeticSetComparison node)
@@ -1187,6 +1279,64 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outADeprivedOfSetArithmetic(node);
     }
 
+    public void inAUnionSetArithmetic(AUnionSetArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAUnionSetArithmetic(AUnionSetArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAUnionSetArithmetic(AUnionSetArithmetic node)
+    {
+        inAUnionSetArithmetic(node);
+        if(node.getSetFactor() != null)
+        {
+            node.getSetFactor().apply(this);
+        }
+        if(node.getUnion() != null)
+        {
+            node.getUnion().apply(this);
+        }
+        if(node.getSetArithmetic() != null)
+        {
+            node.getSetArithmetic().apply(this);
+        }
+        outAUnionSetArithmetic(node);
+    }
+
+    public void inAIntersectionSetArithmetic(AIntersectionSetArithmetic node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIntersectionSetArithmetic(AIntersectionSetArithmetic node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIntersectionSetArithmetic(AIntersectionSetArithmetic node)
+    {
+        inAIntersectionSetArithmetic(node);
+        if(node.getSetFactor() != null)
+        {
+            node.getSetFactor().apply(this);
+        }
+        if(node.getIntersection() != null)
+        {
+            node.getIntersection().apply(this);
+        }
+        if(node.getSetArithmetic() != null)
+        {
+            node.getSetArithmetic().apply(this);
+        }
+        outAIntersectionSetArithmetic(node);
+    }
+
     public void inATermSetFactor(ATermSetFactor node)
     {
         defaultIn(node);
@@ -1287,25 +1437,54 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAExpSetExponent(node);
     }
 
-    public void inASetSetTerm(ASetSetTerm node)
+    public void inAIdentifierSetTerm(AIdentifierSetTerm node)
     {
         defaultIn(node);
     }
 
-    public void outASetSetTerm(ASetSetTerm node)
+    public void outAIdentifierSetTerm(AIdentifierSetTerm node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASetSetTerm(ASetSetTerm node)
+    public void caseAIdentifierSetTerm(AIdentifierSetTerm node)
     {
-        inASetSetTerm(node);
+        inAIdentifierSetTerm(node);
         if(node.getSetIdentifier() != null)
         {
             node.getSetIdentifier().apply(this);
         }
-        outASetSetTerm(node);
+        outAIdentifierSetTerm(node);
+    }
+
+    public void inAElementSetTerm(AElementSetTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAElementSetTerm(AElementSetTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAElementSetTerm(AElementSetTerm node)
+    {
+        inAElementSetTerm(node);
+        if(node.getRightBrace() != null)
+        {
+            node.getRightBrace().apply(this);
+        }
+        if(node.getElementTerm() != null)
+        {
+            node.getElementTerm().apply(this);
+        }
+        if(node.getLeftBrace() != null)
+        {
+            node.getLeftBrace().apply(this);
+        }
+        outAElementSetTerm(node);
     }
 
     public void inAExpressionSetTerm(AExpressionSetTerm node)
@@ -1356,64 +1535,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getElementComparison().apply(this);
         }
         outAComparisonElementExpression(node);
-    }
-
-    public void inALogicalAndElementExpression(ALogicalAndElementExpression node)
-    {
-        defaultIn(node);
-    }
-
-    public void outALogicalAndElementExpression(ALogicalAndElementExpression node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseALogicalAndElementExpression(ALogicalAndElementExpression node)
-    {
-        inALogicalAndElementExpression(node);
-        if(node.getElementComparison() != null)
-        {
-            node.getElementComparison().apply(this);
-        }
-        if(node.getLogicalAnd() != null)
-        {
-            node.getLogicalAnd().apply(this);
-        }
-        if(node.getElementExpression() != null)
-        {
-            node.getElementExpression().apply(this);
-        }
-        outALogicalAndElementExpression(node);
-    }
-
-    public void inALogicalOrElementExpression(ALogicalOrElementExpression node)
-    {
-        defaultIn(node);
-    }
-
-    public void outALogicalOrElementExpression(ALogicalOrElementExpression node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseALogicalOrElementExpression(ALogicalOrElementExpression node)
-    {
-        inALogicalOrElementExpression(node);
-        if(node.getElementComparison() != null)
-        {
-            node.getElementComparison().apply(this);
-        }
-        if(node.getLogicalOr() != null)
-        {
-            node.getLogicalOr().apply(this);
-        }
-        if(node.getElementExpression() != null)
-        {
-            node.getElementExpression().apply(this);
-        }
-        outALogicalOrElementExpression(node);
     }
 
     public void inAArithmeticElementComparison(AArithmeticElementComparison node)

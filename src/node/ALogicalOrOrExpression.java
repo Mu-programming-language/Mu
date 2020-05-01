@@ -5,56 +5,56 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ALogicalOrElementExpression extends PElementExpression
+public final class ALogicalOrOrExpression extends POrExpression
 {
-    private PElementExpression _elementExpression_;
+    private POrExpression _orExpression_;
     private TLogicalOr _logicalOr_;
-    private PElementComparison _elementComparison_;
+    private PSimpleExpression _simpleExpression_;
 
-    public ALogicalOrElementExpression()
+    public ALogicalOrOrExpression()
     {
         // Constructor
     }
 
-    public ALogicalOrElementExpression(
-        @SuppressWarnings("hiding") PElementExpression _elementExpression_,
+    public ALogicalOrOrExpression(
+        @SuppressWarnings("hiding") POrExpression _orExpression_,
         @SuppressWarnings("hiding") TLogicalOr _logicalOr_,
-        @SuppressWarnings("hiding") PElementComparison _elementComparison_)
+        @SuppressWarnings("hiding") PSimpleExpression _simpleExpression_)
     {
         // Constructor
-        setElementExpression(_elementExpression_);
+        setOrExpression(_orExpression_);
 
         setLogicalOr(_logicalOr_);
 
-        setElementComparison(_elementComparison_);
+        setSimpleExpression(_simpleExpression_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ALogicalOrElementExpression(
-            cloneNode(this._elementExpression_),
+        return new ALogicalOrOrExpression(
+            cloneNode(this._orExpression_),
             cloneNode(this._logicalOr_),
-            cloneNode(this._elementComparison_));
+            cloneNode(this._simpleExpression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseALogicalOrElementExpression(this);
+        ((Analysis) sw).caseALogicalOrOrExpression(this);
     }
 
-    public PElementExpression getElementExpression()
+    public POrExpression getOrExpression()
     {
-        return this._elementExpression_;
+        return this._orExpression_;
     }
 
-    public void setElementExpression(PElementExpression node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._elementExpression_ != null)
+        if(this._orExpression_ != null)
         {
-            this._elementExpression_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -67,7 +67,7 @@ public final class ALogicalOrElementExpression extends PElementExpression
             node.parent(this);
         }
 
-        this._elementExpression_ = node;
+        this._orExpression_ = node;
     }
 
     public TLogicalOr getLogicalOr()
@@ -95,16 +95,16 @@ public final class ALogicalOrElementExpression extends PElementExpression
         this._logicalOr_ = node;
     }
 
-    public PElementComparison getElementComparison()
+    public PSimpleExpression getSimpleExpression()
     {
-        return this._elementComparison_;
+        return this._simpleExpression_;
     }
 
-    public void setElementComparison(PElementComparison node)
+    public void setSimpleExpression(PSimpleExpression node)
     {
-        if(this._elementComparison_ != null)
+        if(this._simpleExpression_ != null)
         {
-            this._elementComparison_.parent(null);
+            this._simpleExpression_.parent(null);
         }
 
         if(node != null)
@@ -117,25 +117,25 @@ public final class ALogicalOrElementExpression extends PElementExpression
             node.parent(this);
         }
 
-        this._elementComparison_ = node;
+        this._simpleExpression_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._elementExpression_)
+            + toString(this._orExpression_)
             + toString(this._logicalOr_)
-            + toString(this._elementComparison_);
+            + toString(this._simpleExpression_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._elementExpression_ == child)
+        if(this._orExpression_ == child)
         {
-            this._elementExpression_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class ALogicalOrElementExpression extends PElementExpression
             return;
         }
 
-        if(this._elementComparison_ == child)
+        if(this._simpleExpression_ == child)
         {
-            this._elementComparison_ = null;
+            this._simpleExpression_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class ALogicalOrElementExpression extends PElementExpression
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._elementExpression_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setElementExpression((PElementExpression) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class ALogicalOrElementExpression extends PElementExpression
             return;
         }
 
-        if(this._elementComparison_ == oldChild)
+        if(this._simpleExpression_ == oldChild)
         {
-            setElementComparison((PElementComparison) newChild);
+            setSimpleExpression((PSimpleExpression) newChild);
             return;
         }
 

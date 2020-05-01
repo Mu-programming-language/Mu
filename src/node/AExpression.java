@@ -5,46 +5,46 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASetSetTerm extends PSetTerm
+public final class AExpression extends PExpression
 {
-    private TSetIdentifier _setIdentifier_;
+    private PAndExpression _andExpression_;
 
-    public ASetSetTerm()
+    public AExpression()
     {
         // Constructor
     }
 
-    public ASetSetTerm(
-        @SuppressWarnings("hiding") TSetIdentifier _setIdentifier_)
+    public AExpression(
+        @SuppressWarnings("hiding") PAndExpression _andExpression_)
     {
         // Constructor
-        setSetIdentifier(_setIdentifier_);
+        setAndExpression(_andExpression_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ASetSetTerm(
-            cloneNode(this._setIdentifier_));
+        return new AExpression(
+            cloneNode(this._andExpression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASetSetTerm(this);
+        ((Analysis) sw).caseAExpression(this);
     }
 
-    public TSetIdentifier getSetIdentifier()
+    public PAndExpression getAndExpression()
     {
-        return this._setIdentifier_;
+        return this._andExpression_;
     }
 
-    public void setSetIdentifier(TSetIdentifier node)
+    public void setAndExpression(PAndExpression node)
     {
-        if(this._setIdentifier_ != null)
+        if(this._andExpression_ != null)
         {
-            this._setIdentifier_.parent(null);
+            this._andExpression_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class ASetSetTerm extends PSetTerm
             node.parent(this);
         }
 
-        this._setIdentifier_ = node;
+        this._andExpression_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._setIdentifier_);
+            + toString(this._andExpression_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._setIdentifier_ == child)
+        if(this._andExpression_ == child)
         {
-            this._setIdentifier_ = null;
+            this._andExpression_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class ASetSetTerm extends PSetTerm
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._setIdentifier_ == oldChild)
+        if(this._andExpression_ == oldChild)
         {
-            setSetIdentifier((TSetIdentifier) newChild);
+            setAndExpression((PAndExpression) newChild);
             return;
         }
 
