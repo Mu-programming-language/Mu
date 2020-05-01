@@ -3,6 +3,7 @@ import lexer.*;
 import node.*;
 import java.io.*;
 import interpreter.*;
+import semantic.*;
 
 public class Main {
 	public static void main(String[] arguments) {
@@ -18,6 +19,9 @@ public class Main {
 			Parser parser = new Parser(new Lexer(new PushbackReader(new FileReader(arguments[0]), 1024)));
 			Node tree;
 			tree = parser.parse();
+
+			NumberAnalysis.run(tree);
+
 
 			// FunctionTable functionTable = new FunctionTable();
 			// FunctionFinder.startAnalyse(functionTable, tree);
