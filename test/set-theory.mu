@@ -1,20 +1,20 @@
-set theory;
+category set theory;
 
-Statement:
+statement:
 	let A = {x ∈ R | x ≤ 0},
 	let B = {x ∈ R | x ≥ 0},
-	let C = {x ∈ R | x ≥ 0 ∧ x ≤ 1},
+//	let F = {x ∈ R | x ≥ 0 ∧ x ≤ 1},
 	let D = {x ∈ R | 2*x ≤ 0},
 	let E,
 	E = {x ∈ R | 2*x ≤ 0};
 //	let E = {(x, y) ∈ R² | x² + y² = 1};
 
-Ask:
+ask:
 	#1: show A ≠ B,
 	#2: show C ⊂ B,
 	#3: show A = D;
 
-Proof:
+proof:
 /*	#1:
 		1 ∈ B ∧ 1 ∉ A
 		=> A ≠ C;

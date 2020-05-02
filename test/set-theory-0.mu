@@ -1,9 +1,9 @@
-set theory;
+category set theory;
 
 statement:
 	let A = {x ∈ R | x ≤ 0},
 	let B = {x ∈ R | x ≥ 0},
-	let C = {x ∈ R | x > 0};
+	let D = {x ∈ R | x > 0};
 
 ask:
 	#1: show A ∩ B = {0};
