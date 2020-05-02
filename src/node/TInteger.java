@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TCategory extends Token
+public final class TInteger extends Token
 {
-    public TCategory()
+    public TInteger()
     {
-        super.setText("category");
+        super.setText("Z");
     }
 
-    public TCategory(int line, int pos)
+    public TInteger(int line, int pos)
     {
-        super.setText("category");
+        super.setText("Z");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TCategory extends Token
     @Override
     public Object clone()
     {
-      return new TCategory(getLine(), getPos());
+      return new TInteger(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTCategory(this);
+        ((Analysis) sw).caseTInteger(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TCategory text.");
+        throw new RuntimeException("Cannot change TInteger text.");
     }
 }

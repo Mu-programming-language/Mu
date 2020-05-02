@@ -2,6 +2,7 @@ import parser.*;
 import lexer.*;
 import node.*;
 import java.io.*;
+import compiler.Compiler;
 import interpreter.*;
 import semantic.*;
 
@@ -17,17 +18,18 @@ public class Main {
 		}
 		try {
 			Parser parser = new Parser(new Lexer(new PushbackReader(new FileReader(arguments[0]), 1024)));
-			Node tree;
-			tree = parser.parse();
+			Node tree = parser.parse();
 
-			NumberAnalysis.run(tree);
+			// NumberAnalysis.run(tree);
+			// CallAnalysis.run(tree);
+			// TypeAnalysis.run(tree);
 
+			Compiler.run("mu.out", tree);
 
-			// FunctionTable functionTable = new FunctionTable();
-			// FunctionFinder.startAnalyse(functionTable, tree);
-			// CallVerifier.startAnalyse(functionTable, tree);
+			// parser = new Parser(new Lexer(new PushbackReader(new FileReader("mu.out"), 1024)));
+			// tree = parser.parse();
 
-			Interpreter.start(tree);
+			// Interpreter.run(tree);
 		}
 		catch (FileNotFoundException e) {
 			System.err.println("FILE NOT FOUND ERROR: " + e.getMessage() + ".");

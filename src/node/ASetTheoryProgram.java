@@ -5,24 +5,28 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AProgram extends PProgram
+public final class ASetTheoryProgram extends PProgram
 {
     private TCategory _category_;
+    private TSetTheory _setTheory_;
     private TSemicolon _semicolon_;
     private PInstructions _instructions_;
 
-    public AProgram()
+    public ASetTheoryProgram()
     {
         // Constructor
     }
 
-    public AProgram(
+    public ASetTheoryProgram(
         @SuppressWarnings("hiding") TCategory _category_,
+        @SuppressWarnings("hiding") TSetTheory _setTheory_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_,
         @SuppressWarnings("hiding") PInstructions _instructions_)
     {
         // Constructor
         setCategory(_category_);
+
+        setSetTheory(_setTheory_);
 
         setSemicolon(_semicolon_);
 
@@ -33,8 +37,9 @@ public final class AProgram extends PProgram
     @Override
     public Object clone()
     {
-        return new AProgram(
+        return new ASetTheoryProgram(
             cloneNode(this._category_),
+            cloneNode(this._setTheory_),
             cloneNode(this._semicolon_),
             cloneNode(this._instructions_));
     }
@@ -42,7 +47,7 @@ public final class AProgram extends PProgram
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAProgram(this);
+        ((Analysis) sw).caseASetTheoryProgram(this);
     }
 
     public TCategory getCategory()
@@ -68,6 +73,31 @@ public final class AProgram extends PProgram
         }
 
         this._category_ = node;
+    }
+
+    public TSetTheory getSetTheory()
+    {
+        return this._setTheory_;
+    }
+
+    public void setSetTheory(TSetTheory node)
+    {
+        if(this._setTheory_ != null)
+        {
+            this._setTheory_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._setTheory_ = node;
     }
 
     public TSemicolon getSemicolon()
@@ -125,6 +155,7 @@ public final class AProgram extends PProgram
     {
         return ""
             + toString(this._category_)
+            + toString(this._setTheory_)
             + toString(this._semicolon_)
             + toString(this._instructions_);
     }
@@ -136,6 +167,12 @@ public final class AProgram extends PProgram
         if(this._category_ == child)
         {
             this._category_ = null;
+            return;
+        }
+
+        if(this._setTheory_ == child)
+        {
+            this._setTheory_ = null;
             return;
         }
 
@@ -161,6 +198,12 @@ public final class AProgram extends PProgram
         if(this._category_ == oldChild)
         {
             setCategory((TCategory) newChild);
+            return;
+        }
+
+        if(this._setTheory_ == oldChild)
+        {
+            setSetTheory((TSetTheory) newChild);
             return;
         }
 

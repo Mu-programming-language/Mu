@@ -12,7 +12,11 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
-    void caseAProgram(AProgram node);
+    void caseAAnalysisProgram(AAnalysisProgram node);
+    void caseAAlgebraProgram(AAlgebraProgram node);
+    void caseASetTheoryProgram(ASetTheoryProgram node);
+    void caseAGeometryProgram(AGeometryProgram node);
+    void caseAStatisticAndProbabilityProgram(AStatisticAndProbabilityProgram node);
     void caseAInstructions(AInstructions node);
     void caseAStatementBlock(AStatementBlock node);
     void caseAAskBlock(AAskBlock node);
@@ -61,6 +65,12 @@ public interface Analysis extends Switch
     void caseAMultSetFactor(AMultSetFactor node);
     void caseATermSetExponent(ATermSetExponent node);
     void caseAExpSetExponent(AExpSetExponent node);
+    void caseAComplexSetTerm(AComplexSetTerm node);
+    void caseARealSetTerm(ARealSetTerm node);
+    void caseARationalSetTerm(ARationalSetTerm node);
+    void caseAIntegerSetTerm(AIntegerSetTerm node);
+    void caseANaturalSetTerm(ANaturalSetTerm node);
+    void caseAEmptySetTerm(AEmptySetTerm node);
     void caseAIdentifierSetTerm(AIdentifierSetTerm node);
     void caseAElementSetTerm(AElementSetTerm node);
     void caseAExpressionSetTerm(AExpressionSetTerm node);
@@ -87,6 +97,11 @@ public interface Analysis extends Switch
     void caseAElementElementTerm(AElementElementTerm node);
     void caseAExpressionElementTerm(AExpressionElementTerm node);
 
+    void caseTAnalysis(TAnalysis node);
+    void caseTAlgebra(TAlgebra node);
+    void caseTSetTheory(TSetTheory node);
+    void caseTGeometry(TGeometry node);
+    void caseTStatisticAndProbability(TStatisticAndProbability node);
     void caseTCategory(TCategory node);
     void caseTProof(TProof node);
     void caseTStatement(TStatement node);
@@ -97,6 +112,11 @@ public interface Analysis extends Switch
     void caseTThus(TThus node);
     void caseTDeprivedOf(TDeprivedOf node);
     void caseTNot(TNot node);
+    void caseTComplex(TComplex node);
+    void caseTReal(TReal node);
+    void caseTRational(TRational node);
+    void caseTInteger(TInteger node);
+    void caseTNatural(TNatural node);
     void caseTEmptySet(TEmptySet node);
     void caseTMultiplication(TMultiplication node);
     void caseTDivision(TDivision node);

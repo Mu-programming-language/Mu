@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TCategory extends Token
+public final class TSetTheory extends Token
 {
-    public TCategory()
+    public TSetTheory()
     {
-        super.setText("category");
+        super.setText("set theory");
     }
 
-    public TCategory(int line, int pos)
+    public TSetTheory(int line, int pos)
     {
-        super.setText("category");
+        super.setText("set theory");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TCategory extends Token
     @Override
     public Object clone()
     {
-      return new TCategory(getLine(), getPos());
+      return new TSetTheory(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTCategory(this);
+        ((Analysis) sw).caseTSetTheory(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TCategory text.");
+        throw new RuntimeException("Cannot change TSetTheory text.");
     }
 }

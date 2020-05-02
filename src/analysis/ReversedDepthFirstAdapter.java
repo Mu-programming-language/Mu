@@ -36,20 +36,78 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outStart(node);
     }
 
-    public void inAProgram(AProgram node)
+    public void inAAnalysisProgram(AAnalysisProgram node)
     {
         defaultIn(node);
     }
 
-    public void outAProgram(AProgram node)
+    public void outAAnalysisProgram(AAnalysisProgram node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAProgram(AProgram node)
+    public void caseAAnalysisProgram(AAnalysisProgram node)
     {
-        inAProgram(node);
+        inAAnalysisProgram(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getAnalysis() != null)
+        {
+            node.getAnalysis().apply(this);
+        }
+        if(node.getCategory() != null)
+        {
+            node.getCategory().apply(this);
+        }
+        outAAnalysisProgram(node);
+    }
+
+    public void inAAlgebraProgram(AAlgebraProgram node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAlgebraProgram(AAlgebraProgram node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAlgebraProgram(AAlgebraProgram node)
+    {
+        inAAlgebraProgram(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getAlgebra() != null)
+        {
+            node.getAlgebra().apply(this);
+        }
+        if(node.getCategory() != null)
+        {
+            node.getCategory().apply(this);
+        }
+        outAAlgebraProgram(node);
+    }
+
+    public void inASetTheoryProgram(ASetTheoryProgram node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASetTheoryProgram(ASetTheoryProgram node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASetTheoryProgram(ASetTheoryProgram node)
+    {
+        inASetTheoryProgram(node);
         if(node.getInstructions() != null)
         {
             node.getInstructions().apply(this);
@@ -58,11 +116,73 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getSemicolon().apply(this);
         }
+        if(node.getSetTheory() != null)
+        {
+            node.getSetTheory().apply(this);
+        }
         if(node.getCategory() != null)
         {
             node.getCategory().apply(this);
         }
-        outAProgram(node);
+        outASetTheoryProgram(node);
+    }
+
+    public void inAGeometryProgram(AGeometryProgram node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAGeometryProgram(AGeometryProgram node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAGeometryProgram(AGeometryProgram node)
+    {
+        inAGeometryProgram(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getGeometry() != null)
+        {
+            node.getGeometry().apply(this);
+        }
+        if(node.getCategory() != null)
+        {
+            node.getCategory().apply(this);
+        }
+        outAGeometryProgram(node);
+    }
+
+    public void inAStatisticAndProbabilityProgram(AStatisticAndProbabilityProgram node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStatisticAndProbabilityProgram(AStatisticAndProbabilityProgram node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStatisticAndProbabilityProgram(AStatisticAndProbabilityProgram node)
+    {
+        inAStatisticAndProbabilityProgram(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getStatisticAndProbability() != null)
+        {
+            node.getStatisticAndProbability().apply(this);
+        }
+        if(node.getCategory() != null)
+        {
+            node.getCategory().apply(this);
+        }
+        outAStatisticAndProbabilityProgram(node);
     }
 
     public void inAInstructions(AInstructions node)
@@ -290,9 +410,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getSuchAs().apply(this);
         }
-        if(node.getSetIdentifier() != null)
+        if(node.getSetTerm() != null)
         {
-            node.getSetIdentifier().apply(this);
+            node.getSetTerm().apply(this);
         }
         if(node.getElementOf() != null)
         {
@@ -343,9 +463,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getSuchAs().apply(this);
         }
-        if(node.getSetIdentifier() != null)
+        if(node.getSetTerm() != null)
         {
-            node.getSetIdentifier().apply(this);
+            node.getSetTerm().apply(this);
         }
         if(node.getElementOf() != null)
         {
@@ -1443,6 +1563,132 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getSetExponent().apply(this);
         }
         outAExpSetExponent(node);
+    }
+
+    public void inAComplexSetTerm(AComplexSetTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAComplexSetTerm(AComplexSetTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAComplexSetTerm(AComplexSetTerm node)
+    {
+        inAComplexSetTerm(node);
+        if(node.getComplex() != null)
+        {
+            node.getComplex().apply(this);
+        }
+        outAComplexSetTerm(node);
+    }
+
+    public void inARealSetTerm(ARealSetTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARealSetTerm(ARealSetTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARealSetTerm(ARealSetTerm node)
+    {
+        inARealSetTerm(node);
+        if(node.getReal() != null)
+        {
+            node.getReal().apply(this);
+        }
+        outARealSetTerm(node);
+    }
+
+    public void inARationalSetTerm(ARationalSetTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARationalSetTerm(ARationalSetTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARationalSetTerm(ARationalSetTerm node)
+    {
+        inARationalSetTerm(node);
+        if(node.getRational() != null)
+        {
+            node.getRational().apply(this);
+        }
+        outARationalSetTerm(node);
+    }
+
+    public void inAIntegerSetTerm(AIntegerSetTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIntegerSetTerm(AIntegerSetTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIntegerSetTerm(AIntegerSetTerm node)
+    {
+        inAIntegerSetTerm(node);
+        if(node.getInteger() != null)
+        {
+            node.getInteger().apply(this);
+        }
+        outAIntegerSetTerm(node);
+    }
+
+    public void inANaturalSetTerm(ANaturalSetTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANaturalSetTerm(ANaturalSetTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANaturalSetTerm(ANaturalSetTerm node)
+    {
+        inANaturalSetTerm(node);
+        if(node.getNatural() != null)
+        {
+            node.getNatural().apply(this);
+        }
+        outANaturalSetTerm(node);
+    }
+
+    public void inAEmptySetTerm(AEmptySetTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAEmptySetTerm(AEmptySetTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAEmptySetTerm(AEmptySetTerm node)
+    {
+        inAEmptySetTerm(node);
+        if(node.getEmptySet() != null)
+        {
+            node.getEmptySet().apply(this);
+        }
+        outAEmptySetTerm(node);
     }
 
     public void inAIdentifierSetTerm(AIdentifierSetTerm node)

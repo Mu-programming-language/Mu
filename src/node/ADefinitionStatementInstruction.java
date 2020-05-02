@@ -13,7 +13,7 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
     private TLeftBrace _leftBrace_;
     private TElementIdentifier _elementIdentifier_;
     private TElementOf _elementOf_;
-    private TSetIdentifier _setIdentifier_;
+    private PSetTerm _setTerm_;
     private TSuchAs _suchAs_;
     private PElementExpression _elementExpression_;
     private TRightBrace _rightBrace_;
@@ -30,7 +30,7 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
         @SuppressWarnings("hiding") TLeftBrace _leftBrace_,
         @SuppressWarnings("hiding") TElementIdentifier _elementIdentifier_,
         @SuppressWarnings("hiding") TElementOf _elementOf_,
-        @SuppressWarnings("hiding") TSetIdentifier _setIdentifier_,
+        @SuppressWarnings("hiding") PSetTerm _setTerm_,
         @SuppressWarnings("hiding") TSuchAs _suchAs_,
         @SuppressWarnings("hiding") PElementExpression _elementExpression_,
         @SuppressWarnings("hiding") TRightBrace _rightBrace_)
@@ -48,7 +48,7 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
 
         setElementOf(_elementOf_);
 
-        setSetIdentifier(_setIdentifier_);
+        setSetTerm(_setTerm_);
 
         setSuchAs(_suchAs_);
 
@@ -68,7 +68,7 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
             cloneNode(this._leftBrace_),
             cloneNode(this._elementIdentifier_),
             cloneNode(this._elementOf_),
-            cloneNode(this._setIdentifier_),
+            cloneNode(this._setTerm_),
             cloneNode(this._suchAs_),
             cloneNode(this._elementExpression_),
             cloneNode(this._rightBrace_));
@@ -230,16 +230,16 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
         this._elementOf_ = node;
     }
 
-    public TSetIdentifier getSetIdentifier()
+    public PSetTerm getSetTerm()
     {
-        return this._setIdentifier_;
+        return this._setTerm_;
     }
 
-    public void setSetIdentifier(TSetIdentifier node)
+    public void setSetTerm(PSetTerm node)
     {
-        if(this._setIdentifier_ != null)
+        if(this._setTerm_ != null)
         {
-            this._setIdentifier_.parent(null);
+            this._setTerm_.parent(null);
         }
 
         if(node != null)
@@ -252,7 +252,7 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
             node.parent(this);
         }
 
-        this._setIdentifier_ = node;
+        this._setTerm_ = node;
     }
 
     public TSuchAs getSuchAs()
@@ -340,7 +340,7 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
             + toString(this._leftBrace_)
             + toString(this._elementIdentifier_)
             + toString(this._elementOf_)
-            + toString(this._setIdentifier_)
+            + toString(this._setTerm_)
             + toString(this._suchAs_)
             + toString(this._elementExpression_)
             + toString(this._rightBrace_);
@@ -386,9 +386,9 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
             return;
         }
 
-        if(this._setIdentifier_ == child)
+        if(this._setTerm_ == child)
         {
-            this._setIdentifier_ = null;
+            this._setTerm_ = null;
             return;
         }
 
@@ -453,9 +453,9 @@ public final class ADefinitionStatementInstruction extends PStatementInstruction
             return;
         }
 
-        if(this._setIdentifier_ == oldChild)
+        if(this._setTerm_ == oldChild)
         {
-            setSetIdentifier((TSetIdentifier) newChild);
+            setSetTerm((PSetTerm) newChild);
             return;
         }
 

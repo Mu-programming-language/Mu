@@ -75,7 +75,31 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAProgram(AProgram node)
+    public void caseAAnalysisProgram(AAnalysisProgram node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAlgebraProgram(AAlgebraProgram node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASetTheoryProgram(ASetTheoryProgram node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAGeometryProgram(AGeometryProgram node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAStatisticAndProbabilityProgram(AStatisticAndProbabilityProgram node)
     {
         defaultCase(node);
     }
@@ -369,6 +393,42 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAComplexSetTerm(AComplexSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARealSetTerm(ARealSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARationalSetTerm(ARationalSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIntegerSetTerm(AIntegerSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANaturalSetTerm(ANaturalSetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEmptySetTerm(AEmptySetTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAIdentifierSetTerm(AIdentifierSetTerm node)
     {
         defaultCase(node);
@@ -519,6 +579,36 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTAnalysis(TAnalysis node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTAlgebra(TAlgebra node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTSetTheory(TSetTheory node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTGeometry(TGeometry node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTStatisticAndProbability(TStatisticAndProbability node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTCategory(TCategory node)
     {
         defaultCase(node);
@@ -574,6 +664,36 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTNot(TNot node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTComplex(TComplex node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTReal(TReal node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTRational(TRational node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTInteger(TInteger node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNatural(TNatural node)
     {
         defaultCase(node);
     }

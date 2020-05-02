@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TCategory extends Token
+public final class TGeometry extends Token
 {
-    public TCategory()
+    public TGeometry()
     {
-        super.setText("category");
+        super.setText("geometry");
     }
 
-    public TCategory(int line, int pos)
+    public TGeometry(int line, int pos)
     {
-        super.setText("category");
+        super.setText("geometry");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TCategory extends Token
     @Override
     public Object clone()
     {
-      return new TCategory(getLine(), getPos());
+      return new TGeometry(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTCategory(this);
+        ((Analysis) sw).caseTGeometry(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TCategory text.");
+        throw new RuntimeException("Cannot change TGeometry text.");
     }
 }

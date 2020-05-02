@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class TCategory extends Token
+public final class TAlgebra extends Token
 {
-    public TCategory()
+    public TAlgebra()
     {
-        super.setText("category");
+        super.setText("algebra");
     }
 
-    public TCategory(int line, int pos)
+    public TAlgebra(int line, int pos)
     {
-        super.setText("category");
+        super.setText("algebra");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TCategory extends Token
     @Override
     public Object clone()
     {
-      return new TCategory(getLine(), getPos());
+      return new TAlgebra(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTCategory(this);
+        ((Analysis) sw).caseTAlgebra(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TCategory text.");
+        throw new RuntimeException("Cannot change TAlgebra text.");
     }
 }
