@@ -1,13 +1,13 @@
 Helpers
-	lower_case = ['a'..'z'];
-	upper_case = ['A'..'Z'];
+	lower_case = ['a' .. 'z'];
+	upper_case = ['A' .. 'Z'];
 	letter = lower_case | upper_case;
-	digit = ['0'..'9'];
+	digit = ['0' .. '9'];
 	space = ' ';
 	tab = 9;
 	lf = 10;
 	cr = 13;
-	all = [0..0xFFFF];
+	all = [0 .. 0xFFFF];
 	eol = cr lf | cr | lf;
 	blank = (space | tab | eol);
 	all_except_eol = [all - [cr + lf]];
@@ -16,8 +16,13 @@ Helpers
 	all_except_double_quote = [all - '"'];
 
 Tokens
-	category = 'analysis' | 'algebra' | 'set theory' | 'geometry' | 'statistic and probability';
+	analysis = 'analysis';
+	algebra = 'algebra';
+	set_theory = 'set theory';
+	geometry = 'geometry';
+	statistic_and_probability = 'statistic and probability';
 
+	category = 'category';
 	proof = 'proof';
 	statement = 'statement';
 	ask = 'ask';
@@ -31,6 +36,11 @@ Tokens
 
 	not = '¬' /*| 'not'*/;
 
+	complex = 'C';
+	real = 'R';
+	rational = 'Q';
+	integer = 'Z';
+	natural = 'N';
 	empty_set = '∅';
 
 	multiplication = '*';
@@ -103,7 +113,11 @@ Ignored Tokens
 
 Productions
 	program =
-		category semicolon instructions;
+		{analysis} category analysis semicolon |
+		{algebra} category algebra semicolon |
+		{set_theory} category set_theory semicolon instructions |
+		{geometry} category geometry semicolon |
+		{statistic_and_probability} category statistic_and_probability semicolon;
 	instructions =
 		statement_block ask_block proof_block;
 	statement_block =
@@ -118,8 +132,8 @@ Productions
 		comma statement_instruction;
 	statement_instruction =
 		{declaration} let set_identifier |
-		{assignment} [new]:set_identifier equal_to left_brace element_identifier element_of set_identifier such_as element_expression right_brace |
-		{definition} let [new]:set_identifier equal_to left_brace element_identifier element_of set_identifier such_as element_expression right_brace;
+		{assignment} [new]:set_identifier equal_to left_brace element_identifier element_of set_term such_as element_expression right_brace |
+		{definition} let [new]:set_identifier equal_to left_brace element_identifier element_of set_term such_as element_expression right_brace;
 	ask_instruction_list =
 		ask_instruction additional_ask_instruction* semicolon;
 	additional_ask_instruction =
@@ -182,6 +196,12 @@ Productions
 		{term} set_term |
 		{exp} set_exponent power set_term;
 	set_term =
+		{complex} complex |
+		{real} real |
+		{rational} rational |
+		{integer} integer |
+		{natural} natural |
+		{empty} empty_set |
 		{identifier} set_identifier |
 		{element} left_brace element_term right_brace |
 		{expression} left_parenthesis set_expression right_parenthesis;
